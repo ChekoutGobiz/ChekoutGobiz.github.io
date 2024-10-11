@@ -172,3 +172,55 @@ footer {
     text-align: center;
     padding: 20px;
 }
+
+footer {
+    background: #333;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+  }
+  
+  footer .footer-content h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  footer .footer-content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  footer .socials {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  footer .socials li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  footer .socials li a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: 0.3s;
+  }
+  
+  footer .socials li a:hover {
+    color: #ff7a00;
+  }
+  
+  footer .footer-bottom p {
+    font-size: 0.9rem;
+  }
+  
+  footer .footer-bottom a {
+    color: #ff7a00;
+    text-decoration: none;
+  }
+  
+  footer .footer-bottom a:hover {
+    text-decoration: underline;
+  }
+  
