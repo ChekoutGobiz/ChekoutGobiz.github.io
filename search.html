@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KuyJajan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   <!-- Header Section -->
+<header>
+    <a href="index.html" class="logo"><img src="img/Jajan TB (2).png" alt="KuyJajan Logo"></a>
+    <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="product.html">Product</a></li>
+    </ul>
+    <div class="icons">
+        <div class="icon-item" style="position: relative;">
+            <!-- Kolom Pencarian -->
+            <div id="search-container" style="display: none; position: absolute; left: -220px; top: 0;">
+                <input type="text" placeholder="Search here..." id="search-box" style="padding: 5px; width: 200px;">
+            </div>
+            <a href="#" id="search-icon"><i class="ri-search-line"></i></a>
+            <span>Search</span>
+        </div>
+        <div class="icon-item">
+            <a href="login.html"><i class="ri-user-line"></i></a>
+            <span>Login</span>
+        </div>
+        <div class="icon-item">
+            <a href="#"><i class="ri-shopping-cart-line"></i></a>
+            <span>Cart</span>
+        </div>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+</header>
+
+<!-- Home Section -->
+<section class="home" id="home">
+	<div class="home-text">
+		<h4>Cari jajanan favoritmu disini🔥</h4>
+		<h1>Nikmat & higienis</h1>
+		<a href="product.html" class="btn">Explore Now</a>
+	</div>
+	<div class="home-img">
+		<img src="img/Achievement _Flatline.svg" alt="Achievement">
+	</div>
+</section>
+
+<script>
+    const searchIcon = document.getElementById('search-icon');
+    const searchContainer = document.getElementById('search-container');
+
+    searchIcon.addEventListener('click', function(event) {
+        event.preventDefault();
+        if (searchContainer.style.display === 'none') {
+            searchContainer.style.display = 'block';
+        } else {
+            searchContainer.style.display = 'none';
+        }
+    });
+</script>
+
+masukin di index.html
