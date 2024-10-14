@@ -3,20 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KuyJajan - Product</title>
+  <title>KuyJajan - Product Slider</title>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Style untuk produk slider */
+    .product-slider-section {
+      padding: 40px 80px;
+      background-color: #f8f9fa;
+    }
+
+    .product-slider {
+      width: 100%;
+    }
+
+    .product-card {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    /* Penyesuaian ukuran gambar */
+    .product-card img {
+      width: 100%;
+      height: 200px; /* Menetapkan tinggi gambar */
+      object-fit: cover; /* Gambar di-resize dengan mempertahankan proporsi */
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .product-card p {
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* Hover effect untuk produk */
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
+
+    /* Swiper navigation button styling */
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #ff6b6b;
+    }
+
+    @media (max-width: 768px) {
+      .product-card {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <!--- Header --->
   <header>
-    <a href="index.html" class="logo"><img src="img/Jajan TB (2).png"></a>
-
+    <a href="index.html" class="logo"><img src="img/Jajan TB (2).png" alt="Logo"></a>
     <ul class="navbar">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="product.html">Product</a></li>
     </ul>
-
     <div class="icons">
       <a href="#"><i class="ri-search-line"></i></a>
       <a href="login.html"><i class="ri-user-line"></i></a>
@@ -25,87 +85,101 @@
     </div>
   </header>
 
-  <!--- Product Section --->
-  <section class="product">
+  <!-- Product Slider Section -->
+  <section class="product-slider-section">
     <div class="middle-text">
-      <h2>Cocokan seleramu dengan <span>Produk kami</span></h2>
+      <h2>Pilih Produk <span>Favoritmu</span></h2>
     </div>
 
-    <div class="product-content" id="product">
-      <!-- Produk Bandung -->
-      <div class="box">
-        <div class="card_box">
-          <img src="img/bandung.jpg" alt="Bandung">
+    <!-- Swiper Container -->
+    <div class="swiper-container product-slider">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <img src="img/seblak.jpg" alt="Seblak">
+            <h3>Seblak</h3>
+            <p>Rp. 15.000</p>
+          </div>
         </div>
-        <h3><a href="#" class="city" onclick="showProducts('bandung')">Bandung</a></h3>
-        <h4>Kota</h4>
-        <div class="heart"><i class="ri-heart-fill"></i></div>
-      </div>
 
-      <!-- Daftar makanan Bandung (disembunyikan secara default) -->
-      <div class="products-list" id="bandung-products" style="display:none;">
-        <h4>Makanan khas Bandung:</h4>
-        <ul>
-          <li>
-            <img src="img/seblak.jpg" alt="Seblak" style="width: 100px;">
-            Seblak - Rp.15.000
-          </li>
-          <li>
-            <img src="img/batagor.jpeg" alt="Batagor" style="width: 100px;">
-            Batagor - Rp.20.000
-          </li>
-          <li>
-            <img src="img/cimol.jpeg" alt="Cimol" style="width: 100px;">
-            Cimol - Rp.5.000
-          </li>
-        </ul>
-      </div>
-
-      <!-- Produk Jakarta -->
-      <div class="box">
-        <div class="card_box">
-          <img src="img/jakarta.jpg" alt="Jakarta">
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <img src="img/batagor.jpeg" alt="Batagor">
+            <h3>Batagor</h3>
+            <p>Rp. 20.000</p>
+          </div>
         </div>
-        <h3><a href="#" class="city" onclick="showProducts('jakarta')">Jakarta</a></h3>
-        <h4>Kota</h4>
-        <div class="heart"><i class="ri-heart-fill"></i></div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <img src="img/cimol.jpeg" alt="Cimol">
+            <h3>Cimol</h3>
+            <p>Rp. 5.000</p>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <img src="img/teh pucuk.jpeg" alt="Teh Pucuk">
+            <h3>Teh Pucuk</h3>
+            <p>Rp. 4.000</p>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <img src="img/esjeruk.jpeg" alt="Es Jeruk">
+            <h3>Es Jeruk</h3>
+            <p>Rp. 5.000</p>
+          </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <img src="img/air mineral.jpeg" alt="Air Mineral">
+            <h3>Air Mineral</h3>
+            <p>Rp. 3.000</p>
+          </div>
+        </div>
+
+        <!-- Tambahkan lebih banyak slide di sini -->
+
       </div>
 
-      <!-- Daftar minuman Jakarta (disembunyikan secara default) -->
-      <div class="products-list" id="jakarta-products" style="display:none;">
-        <h4>Minuman yang tersedia di Jakarta:</h4>
-        <ul>
-          <li>
-            <img src="img/teh pucuk.jpeg" alt="Teh Pucuk" style="width: 100px;">
-            Teh Pucuk - Rp.4.000
-          </li>
-          <li>
-            <img src="img/esjeruk.jpeg" alt="Es Jeruk" style="width: 100px;">
-            Es Jeruk - Rp.5.000
-          </li>
-          <li>
-            <img src="img/air mineral.jpeg" alt="Air Mineral" style="width: 100px;">
-            Air Mineral - Rp.3.000
-          </li>
-        </ul>
-      </div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
   </section>
 
-  <script>
-    function showProducts(city) {
-      // Menyembunyikan semua daftar produk terlebih dahulu
-      var allProducts = document.querySelectorAll('.products-list');
-      allProducts.forEach(function(product) {
-        product.style.display = 'none';
-      });
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-      // Menampilkan daftar produk untuk kota yang diklik
-      var cityProducts = document.getElementById(city + '-products');
-      if (cityProducts) {
-        cityProducts.style.display = 'block';
+  <!-- Swiper Initialization -->
+  <script>
+    var swiper = new Swiper('.product-slider', {
+      slidesPerView: 3,   // Jumlah produk per tampilan
+      spaceBetween: 30,   // Jarak antar produk
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2, // Pada tablet tampilkan 2 produk
+        },
+        480: {
+          slidesPerView: 1, // Pada layar kecil tampilkan 1 produk
+        },
       }
-    }
+    });
   </script>
 </body>
 </html>
