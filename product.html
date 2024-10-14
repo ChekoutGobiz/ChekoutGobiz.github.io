@@ -26,25 +26,43 @@
   </header>
 
   <!--- Product Section --->
-  <section class="product" >
+  <section class="product">
     <div class="middle-text">
       <h2>Cocokan seleramu dengan <span>Produk kami</span></h2>
     </div>
 
     <div class="product-content" id="product">
-      <!-- Produk pertama -->
+      <!-- Produk Bandung -->
       <div class="box">
-        <div class="box-img">
-          <img src="img/jakarta.png" alt="Jakarta">
+        <div class="card_box">
+          <img src="img/bandung.jpg" alt="Bandung">
+        </div>
+        <h3><a href="#" class="city" onclick="showProducts('bandung')">Bandung</a></h3>
+        <h4>Kota</h4>
+        <div class="heart"><i class="ri-heart-fill"></i></div>
+      </div>
+
+      <!-- Daftar makanan Bandung (disembunyikan secara default) -->
+      <div class="products-list" id="bandung-products" style="display:none;">
+        <h4>Makanan khas Bandung:</h4>
+        <ul>
+          <li>Seblak - Rp.15.000</li>
+          <li>Batagor - Rp.20.000</li>
+          <li>Cimol - Rp.5.000</li>
+        </ul>
+      </div>
+
+      <!-- Produk Jakarta -->
+      <div class="box">
+        <div class="card_box">
+          <img src="img/jakarta.jpg" alt="Jakarta">
         </div>
         <h3><a href="#" class="city" onclick="showProducts('jakarta')">Jakarta</a></h3>
         <h4>Kota</h4>
         <div class="heart"><i class="ri-heart-fill"></i></div>
       </div>
 
-      <!-- Tambahkan produk lainnya di sini -->
-
-      <!-- Daftar minuman (disembunyikan secara default) -->
+      <!-- Daftar minuman Jakarta (disembunyikan secara default) -->
       <div class="products-list" id="jakarta-products" style="display:none;">
         <h4>Minuman yang tersedia di Jakarta:</h4>
         <ul>
@@ -53,19 +71,18 @@
           <li>Air Mineral - Rp.3.000</li>
         </ul>
       </div>
-
     </div>
   </section>
 
   <script>
     function showProducts(city) {
-      // Menyembunyikan semua daftar minuman terlebih dahulu
+      // Menyembunyikan semua daftar produk terlebih dahulu
       var allProducts = document.querySelectorAll('.products-list');
       allProducts.forEach(function(product) {
         product.style.display = 'none';
       });
 
-      // Menampilkan daftar minuman untuk kota yang diklik
+      // Menampilkan daftar produk untuk kota yang diklik
       var cityProducts = document.getElementById(city + '-products');
       if (cityProducts) {
         cityProducts.style.display = 'block';
