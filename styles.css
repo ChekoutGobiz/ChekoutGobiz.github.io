@@ -224,3 +224,20 @@ footer {
     text-decoration: underline;
   }
   
+
+  footer {
+    width: 100%; /* Memastikan footer menempati lebar penuh */
+    position: relative; /* Atur posisi relatif agar mudah disesuaikan */
+    text-align: center; /* Atur semua konten teks agar berada di tengah */
+}
+
+.container.d-flex {
+    justify-content: center; /* Pastikan tombol berada di tengah secara horizontal */
+    margin: 0 auto; /* Posisikan elemen container di tengah */
+}
+
+.footer-bottom {
+    text-align: center; /* Atur teks di tengah */
+    width: 100%; /* Buat lebar penuh */
+    margin: 0 auto; /* Posisikan di tengah secara horizontal */
+}
