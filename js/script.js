@@ -1,29 +1,47 @@
-const header = document.querySelector("header");
+// Get the modal
+const modal = document.getElementById("cityModal");
+const closeBtn = document.querySelector(".close");
 
-window.addEventListener ("scroll", function() {
-	header.classList.toggle ("sticky", window.scrollY > 0);
+// Get modal elements
+const cityName = document.getElementById("cityName");
+const cityDescription = document.getElementById("cityDescription");
+
+// City data
+const cities = {
+  Bandung: "Bandung adalah kota yang dikenal dengan cuaca sejuk dan kuliner khas seperti batagor dan siomay.",
+  Jakarta: "Jakarta, ibukota Indonesia, memiliki beragam kuliner seperti kerak telor dan soto Betawi.",
+  Jogja: "Yogyakarta terkenal dengan kuliner tradisionalnya seperti gudeg dan bakpia.",
+  Semarang : "Kota Semarang adalah ibu kota provinsi Jawa Tengah, Indonesia. Kota ini adalah kota metropolitan terbesar kelima di Indonesia setelah Jakarta, Surabaya, Medan, dan Bandung.",
+  Surabaya : "Kota Surabaya adalah ibu kota Provinsi Jawa Timur yang menjadi pusat pemerintahan dan perekonomian sekaligus kota terbesar di provinsi tersebut. Surabaya juga merupakan sebuah kota yang terletak di Provinsi Jawa Timur, Indonesia.",
+  Bali : "Bali adalah sebuah provinsi di Indonesia yang terletak pada bagian barat Kepulauan Nusa Tenggara dan beribu kota di Kota Denpasar. Pulau Bali, yang merupakan pulau terbesar di Provinsi Bali, memiliki beberapa julukan, di antaranya Pulau Dewata dan Pulau Seribu Pura.",
+  Malang : "Kota Malang adalah sebuah kota yang terletak di Provinsi Jawa Timur, Indonesia, Kota ini merupakan kota terbesar kedua di Jawa Timur setelah Surabaya, dan kota terbesar ke-12 di Indonesia. Kota ini didirikan pada masa Pemerintahan Belanda pada 1 April 1914 dengan E.K Broeveldt sebagai wali kota pertama.",
+};
+
+// Add event listener for "See More" buttons
+document.querySelectorAll(".seemore_bt a").forEach(btn => {
+  btn.addEventListener("click", function(event) {
+    event.preventDefault();
+    
+    // Get the city name
+    const city = this.parentElement.parentElement.querySelector("h4").textContent;
+    
+    // Set modal content
+    cityName.textContent = city;
+    cityDescription.textContent = cities[city] || "Deskripsi tidak tersedia.";
+
+    // Show the modal
+    modal.style.display = "flex";
+  });
 });
 
-let menu = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+// Close modal when 'X' is clicked
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
 
-menu.onclick = () => {
-	menu.classList.toggle('bx-x');
-	navbar.classList.toggle('open');
-};
-
-window.onscroll = () => {
-	menu.classList.remove('bx-x');
-	navbar.classList.remove('open');
-};
-
-const sr = ScrollReveal ({
-	distance: '60px',
-	duration: 2500,
-	delay: 400,
-	reset: true
-})
-
-sr.reveal('.home-text',{delay:200, origin:'top'});
-sr.reveal('.home-img',{delay:300, origin:'top'});
-sr.reveal('.feature, .product, .cta-content, .contact',{delay:200, origin:'top'});
+// Close modal if user clicks outside the modal content
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
