@@ -86,100 +86,61 @@
   </header>
 
   <!-- Product Slider Section -->
-  <section class="product-slider-section">
-    <div class="middle-text">
-      <h2>Pilih Produk <span>Favoritmu</span></h2>
-    </div>
-
-    <!-- Swiper Container -->
-    <div class="swiper-container product-slider">
-      <div class="swiper-wrapper">
-
-        <!-- Slide 1 -->
-        <div class="swiper-slide">
-          <div class="product-card">
+  <section class="popular-products">
+    <h2>Popular Products</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <span class="label sale">Sale 10%</span>
             <img src="img/seblak.jpg" alt="Seblak">
             <h3>Seblak</h3>
-            <p>Rp. 15.000</p>
-          </div>
+            <p>Khas Bandung</p>
+            <div class="ratings">★★★★☆ 4.3 (4)</div>
+            <div class="price">
+                <span class="discount-price">$21.6</span>
+                <span class="original-price">$24</span>
+            </div>
+            <button class="add-to-cart">+ Add</button>
         </div>
 
-        <!-- Slide 2 -->
-        <div class="swiper-slide">
-          <div class="product-card">
-            <img src="img/batagor.jpeg" alt="Batagor">
-            <h3>Batagor</h3>
-            <p>Rp. 20.000</p>
-          </div>
+        <div class="product-card">
+            <span class="label buy1get1">Buy 1 Get $4.00 Off</span>
+            <img src="img/bakpia.jpg" alt="Bakpia">
+            <h3>Bakpia</h3>
+            <p>Khas Jogja</p>
+            <div class="ratings">★★★★☆ 4.3 (4)</div>
+            <div class="price">
+                <span class="discount-price">$35</span>
+                <span class="original-price">$35</span>
+            </div>
+            <button class="add-to-cart">+ Add</button>
         </div>
 
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="product-card">
-            <img src="img/cimol.jpeg" alt="Cimol">
-            <h3>Cimol</h3>
-            <p>Rp. 5.000</p>
+        <div class="product-card">
+          <span class="label buy1get1">Sale 10%</span>
+          <img src="img/seblak.jpg" alt="Bakso Malang">
+          <h3>Baskso Malang</h3>
+          <p>Khas Malang</p>
+          <div class="ratings">★★★★☆ 4.3 (4)</div>
+          <div class="price">
+              <span class="discount-price">$35</span>
+              <span class="original-price">$35</span>
           </div>
+          <button class="add-to-cart">+ Add</button>
         </div>
 
-        <!-- Slide 4 -->
-        <div class="swiper-slide">
-          <div class="product-card">
-            <img src="img/teh pucuk.jpeg" alt="Teh Pucuk">
-            <h3>Teh Pucuk</h3>
-            <p>Rp. 4.000</p>
+        <div class="product-card">
+          <span class="label buy1get1">Sale 10%</span>
+          <img src="img/lumpia.jpeg" alt="Lumpia">
+          <h3>Lumpia</h3>
+          <p>Khas Semarang</p>
+          <div class="ratings">★★★★☆ 4.3 (4)</div>
+          <div class="price">
+              <span class="discount-price">$35</span>
+              <span class="original-price">$35</span>
           </div>
+          <button class="add-to-cart">+ Add</button>
         </div>
-
-        <!-- Slide 5 -->
-        <div class="swiper-slide">
-          <div class="product-card">
-            <img src="img/esjeruk.jpeg" alt="Es Jeruk">
-            <h3>Es Jeruk</h3>
-            <p>Rp. 5.000</p>
-          </div>
-        </div>
-
-        <!-- Slide 6 -->
-        <div class="swiper-slide">
-          <div class="product-card">
-            <img src="img/air mineral.jpeg" alt="Air Mineral">
-            <h3>Air Mineral</h3>
-            <p>Rp. 3.000</p>
-          </div>
-        </div>
-
-        <!-- Tambahkan lebih banyak slide di sini -->
-
-      </div>
-
-      <!-- Add Arrows -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+        <!-- Add more product cards here following the same structure -->
     </div>
-  </section>
-
-  <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Swiper Initialization -->
-  <script>
-    var swiper = new Swiper('.product-slider', {
-      slidesPerView: 3,   // Jumlah produk per tampilan
-      spaceBetween: 30,   // Jarak antar produk
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2, // Pada tablet tampilkan 2 produk
-        },
-        480: {
-          slidesPerView: 1, // Pada layar kecil tampilkan 1 produk
-        },
-      }
-    });
-  </script>
-</body>
+</section>
 </html>
