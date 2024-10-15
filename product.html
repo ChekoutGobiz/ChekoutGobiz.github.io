@@ -65,18 +65,28 @@
         padding: 15px;
       }
     }
+
+    .navbar a {
+      color: black; /* Warna default */
+      text-decoration: none;
+    }
+    
+    .navbar a.active {
+      color: red; /* Warna merah untuk halaman aktif */
+    }
+    
   </style>
 </head>
 
 <body>
   <!--- Header --->
   <header>
-    <a href="index.html" class="logo"><img src="img/Jajan TB (2).png" alt="Logo"></a>
+    <a href="index.html" class="logo"><img src="img/logo kuyjajan.jpg" alt="KuyJajan Logo"></a>
     <ul class="navbar">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="product.html">Product</a></li>
-    </ul>
+      <li><a href="product.html" class="active">Product</a></li>
+    </ul>    
     <div class="icons">
       <a href="#"><i class="ri-search-line"></i></a>
       <a href="login.html"><i class="ri-user-line"></i></a>
@@ -143,4 +153,24 @@
         <!-- Add more product cards here following the same structure -->
     </div>
 </section>
+
+<!-- Footer Section -->
+<footer class="text-center text-white" style="background-color: #1a71c2;">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: CTA -->
+    <section class="">
+      
+    </section>
+    <!-- Section: CTA -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); display: flex; justify-content: center; align-items: center; height: 50px;">
+    © 2020 KuyJajan
+  </div>
+  <!-- Copyright -->
+</footer>
+
 </html>
