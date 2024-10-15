@@ -490,4 +490,68 @@ header {
 .destination-info p {
     margin: 5px 0 0;
 }
+    /* Style untuk produk slider */
+    .product-slider-section {
+      padding: 40px 80px;
+      background-color: #f8f9fa;
+    }
 
+    .product-slider {
+      width: 100%;
+    }
+
+    .product-card {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    /* Penyesuaian ukuran gambar */
+    .product-card img {
+      width: 100%;
+      height: 200px; /* Menetapkan tinggi gambar */
+      object-fit: cover; /* Gambar di-resize dengan mempertahankan proporsi */
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .product-card p {
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* Hover effect untuk produk */
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
+
+    /* Swiper navigation button styling */
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #ff6b6b;
+    }
+
+    @media (max-width: 768px) {
+      .product-card {
+        padding: 15px;
+      }
+    }
+
+    .navbar a {
+      color: black; /* Warna default */
+      text-decoration: none;
+    }
+    
+    .navbar a.active {
+      color: red; /* Warna merah untuk halaman aktif */
+    }
+    
