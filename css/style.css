@@ -439,3 +439,55 @@ header {
     color: #2ecc71; /* Warna hijau */
     margin-bottom: 15px;
 }
+.destination-section {
+    padding: 40px 0;
+    background-color: #f8f9fa;
+}
+
+.destination-section h2 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.destination-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.destination-item:hover {
+    transform: scale(1.05);
+}
+
+.destination-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.destination-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+}
+
+.destination-info h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.destination-info p {
+    margin: 5px 0 0;
+}
+
