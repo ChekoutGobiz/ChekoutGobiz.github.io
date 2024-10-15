@@ -57,46 +57,75 @@ header {
     font-size: 12px;
 }
 
-/* Home Section */
-.home {
-    display: flex;
-    justify-content: space-between;
-    padding: 50px 80px;
-    background-color: #f5f5f5;
-    height: calc(100vh - 80px);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.home-text {
+body, html {
+    font-family: 'Arial', sans-serif;
+}
+
+.promo-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #f9f4ec; /* Background light color */
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.promo-content {
     max-width: 50%;
 }
 
-.home-text h4 {
-    font-size: 24px;
-    color: #ff6b6b;
-    margin-bottom: 10px;
+.free-shipping-banner {
+    display: inline-block;
+    background-color: #ffd700; /* Gold color */
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
-.home-text h1 {
-    font-size: 56px;
-    font-weight: 800;
+.promo-content h2 {
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.highlight {
+    color: #00a852; /* Green color for the $100 */
+}
+
+.description {
+    font-size: 16px;
+    color: #666;
     margin-bottom: 20px;
 }
 
-.home-text .btn {
-    padding: 10px 25px;
-    background-color: #ff6b6b;
-    color: #fff;
-    font-size: 18px;
+.btn-show-now {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
-.home-text .btn:hover {
-    background-color: #e85050;
+.btn-show-now:hover {
+    background-color: #00a852; /* Hover effect: Green */
 }
 
-.home-img img {
-    max-width: 100%;
+.promo-image img {
+    max-width: 500px; /* Adjust this size as needed */
+    border-radius: 10px;
 }
 
 /* Kota Kuliner Terpopuler */
@@ -177,6 +206,42 @@ header {
     margin-top: 20px;
 }
 
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+}
+
+.modal .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal .close:hover {
+    color: #ff6b6b;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     header {
@@ -223,3 +288,229 @@ header {
         padding: 20px;
     }
 }
+
+
+.popular-products {
+    padding: 20px;
+    text-align: center;
+}
+
+.popular-products h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    position: relative;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+.ratings {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.discount-price {
+    color: #28a745;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.original-price {
+    color: #999;
+    text-decoration: line-through;
+}
+
+.add-to-cart {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-to-cart:hover {
+    background-color: #218838;
+}
+
+.label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+.sale {
+    background-color: #ff6666;
+}
+
+.buy1get1 {
+    background-color: #ffcc00;
+}
+
+.hot {
+    background-color: #ff3333;
+}
+/* Stats Section */
+.stats-section {
+    background-color: #fff;
+    padding: 50px 0;
+}
+
+.stat-box {
+    text-align: center;
+    color: #333;
+}
+
+.stat-box img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.stat-box h3 {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.stat-box p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Swiper Custom Styling */
+.swiper-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.swiper-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    flex-shrink: 0;
+}
+
+/* Pagination dots */
+.swiper-pagination-bullet {
+    background-color: #333;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #000;
+}
+/* Menu Section */
+.menu-section {
+    background-color: #3A5F0B; /* Hijau */
+    padding: 50px 0;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu-section h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.menu-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 45%;
+}
+
+.menu-item {
+    display: flex;
+    background-color: #593D2F; /* Brown */
+    padding: 15px;
+    border-radius: 10px;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.menu-details h3 {
+    font-size: 18px;
+    margin: 0 0 5px;
+    color: white;
+}
+
+.menu-details p {
+    font-size: 14px;
+    margin: 0;
+    color: #D5D5D5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-column {
+        width: 100%;
+    }
+
+    .menu-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+  
