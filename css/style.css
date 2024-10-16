@@ -633,4 +633,49 @@ header {
     .submit-button:hover {
         background-color: #555;
     }
+    .promo-section {
+        background: linear-gradient(90deg, #650f5d, #da0d40);
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 900px;
+        margin: 0 auto;
+        color: white;
+    }
+    
+    .promo-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .promo-text h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .promo-text p {
+        font-size: 1.2rem;
+        color: #ffde4e;
+    }
+    
+    .promo-button {
+        background-color: #ff6600;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        font-weight: bold;
+    }
+    
+    .promo-button:hover {
+        background-color: #e65c00;
+    }
     
