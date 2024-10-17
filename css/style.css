@@ -678,4 +678,75 @@ header {
     .promo-button:hover {
         background-color: #e65c00;
     }
-    
+    .location-section {
+  /* Gaya umum untuk section */
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.location-section header {
+  /* Gaya untuk header */
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.location-section .input-container {
+  /* Gaya untuk container input */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.location-section input {
+  /* Gaya untuk input */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 250px;
+}
+
+.location-section button {
+  /* Gaya untuk tombol */
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.location-section .results-container {
+  /* Gaya untuk container hasil (bisa disesuaikan) */
+  margin-top: 20px;
+}
+.container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .item ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .quantity {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+  }
+  
+  .button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
