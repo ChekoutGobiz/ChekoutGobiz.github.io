@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Keranjang Belanja</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Produk</th>
+        <th>Harga Satuan</th>
+        <th>Kuantitas</th>
+        <th>Total Harga</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" checked></td>
+        <td>
+          <img src="img/seblak.jpg" alt="Produk 1">
+          <p>Seblak</p>
+        </td>
+        <td>Rp120.000</td>
+        <td>
+          <button class="kurang">-</button>
+          <span class="kuantitas">1</span>
+          <button class="tambah">+</button>
+        </td>
+        <td>Rp120.000</td>
+        <td>
+          <button class="hapus">Hapus</button>
+          <button class="lihat-detail">Detail Produk</button>
+        </td>
+      </tr>
+      </tbody>
+  </table>
+  <div class="voucher">
+    <input type="checkbox" id="voucher">
+    <label for="voucher">Voucher KuyJajan</label>
+    <input type="text" placeholder="Masukkan kode">
+    <button>Gunakan</button>
+  </div>
+  <div class="total">
+    <p>Total (0 produk): Rp0</p>
+    <button>Checkout</button>
+  </div>
+</body>
+</html>
