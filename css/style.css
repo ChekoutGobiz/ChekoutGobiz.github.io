@@ -724,10 +724,10 @@ header {
   margin-top: 20px;
 }
 .container {
-    width: 1600px;
+    width: 1000px;
     margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
+    padding: 10px;
+    border: 2px solid #ccc;
   }
   
   .item ul {
