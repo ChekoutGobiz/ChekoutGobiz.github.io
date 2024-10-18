@@ -724,7 +724,7 @@ header {
   margin-top: 20px;
 }
 .container {
-    width: 300px;
+    width: 1600px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -750,3 +750,4 @@ header {
     cursor: pointer;
   }
   
+ 
