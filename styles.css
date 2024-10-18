@@ -42,6 +42,7 @@ header {
     color: #ff6b6b;
 }
 
+/* Search and Icons */
 .icons {
     display: flex;
     align-items: center;
@@ -55,121 +56,6 @@ header {
 .icon-item span {
     display: block;
     font-size: 12px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    font-family: 'Arial', sans-serif;
-}
-
-.promo-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
-    background-color: #f9f4ec; /* Background light color */
-    border-radius: 10px;
-    margin: 20px;
-}
-
-.promo-content {
-    max-width: 50%;
-}
-
-.free-shipping-banner {
-    display: inline-block;
-    background-color: #ffd700; /* Gold color */
-    padding: 5px 10px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #000;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-.promo-content h2 {
-    font-size: 36px;
-    line-height: 1.2;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.highlight {
-    color: #00a852; /* Green color for the $100 */
-}
-
-.description {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.btn-show-now {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-show-now:hover {
-    background-color: #00a852; /* Hover effect: Green */
-}
-
-.promo-image img {
-    max-width: 500px; /* Adjust this size as needed */
-    border-radius: 10px;
-}
-
-/* Kota Kuliner Terpopuler */
-.service_section {
-    padding: 60px 80px;
-    background-color: #fff;
-}
-
-.service_taital {
-    text-align: center;
-    font-size: 36px;
-    color: #333;
-    font-weight: 700;
-    margin-bottom: 40px;
-}
-
-.card_box {
-    background-color: #fff;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.card_box img {
-    width: 100%;
-    height: 200px; /* Diubah dari 250px menjadi 200px */
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.card_box:hover {
-    transform: translateY(-10px);
-}
-
-.card_box h4 {
-    font-size: 20px;
-    margin: 10px 0;
-}
-
-.seemore_bt a {
-    color: #ff6b6b;
-    text-decoration: none;
-    font-weight: 600;
 }
 
 /* Search Container */
@@ -191,58 +77,102 @@ body, html {
     width: 200px;
 }
 
-/* Swiper Styles */
-.swiper-container {
-    width: 100%;
-    padding: 20px 0;
-}
-
-.swiper-slide {
+/* Home Section */
+.home {
     display: flex;
-    justify-content: center;
-}
-
-.swiper-pagination {
-    margin-top: 20px;
-}
-
-/* Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 60px 80px;
+    background-color: #fff;
 }
 
-.modal-content {
+.home-text h1 {
+    font-size: 60px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.home-text h4 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #555;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff6b6b;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e55a5a;
+}
+
+.home-img img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+    background-color: #f9f9f9;
+    padding: 60px 80px;
+    text-align: center;
+}
+
+.why-choose-us h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.why-choose-us p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.feature-item {
     background-color: #fff;
     padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    width: 60%;
-    max-width: 600px;
-    text-align: center;
-    position: relative;
+    transition: transform 0.3s ease;
 }
 
-.modal .close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
+.feature-item:hover {
+    transform: translateY(-10px);
 }
 
-.modal .close:hover {
+.feature-icon {
+    font-size: 40px;
     color: #ff6b6b;
+    margin-bottom: 15px;
 }
 
-/* Responsive */
+.feature-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     header {
         padding: 20px 40px;
@@ -280,244 +210,124 @@ body, html {
         cursor: pointer;
     }
 
-    .service_section {
+    .why-choose-us {
         padding: 40px 40px;
     }
 
-    .service_box {
-        padding: 20px;
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
-}
-
-
-.popular-products {
-    padding: 20px;
-    text-align: center;
-}
-
-.popular-products h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+  }
+  
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .product-card h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .product-card p {
+    flex-grow: 1;
+    margin: 10px 0;
+  }
+  
+  .product-card .price {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  
+  .product-card button.add-to-cart {
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .product-card button.add-to-cart:hover {
+    background-color: #c00;
+  }
+  
+  .product-card .ratings {
+    margin: 10px 0;
+    font-size: 0.9rem;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
 }
 
 .product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Mengatur posisi isi kartu */
     border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    background-color: #fff;
-    position: relative;
+    padding: 20px;
+    text-align: center;
+    height: 400px; /* Pastikan tinggi kartu seragam */
 }
 
 .product-card img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 10px;
+    max-width: 100%;
+    height: 150px; /* Atur tinggi gambar agar konsisten */
+    object-fit: cover; /* Memastikan proporsi gambar tetap */
 }
 
 .product-card h3 {
-    font-size: 18px;
+    font-size: 1.2rem;
     margin: 10px 0;
 }
 
 .product-card p {
-    color: #666;
-    font-size: 14px;
-}
-
-.ratings {
-    font-size: 14px;
+    flex-grow: 1; /* Mengisi ruang kosong untuk menjaga tombol di bawah */
     margin: 10px 0;
 }
 
-.price {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
+.product-card .price {
+    font-size: 1rem;
+    margin: 10px 0;
 }
 
-.discount-price {
-    color: #28a745;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.original-price {
-    color: #999;
-    text-decoration: line-through;
-}
-
-.add-to-cart {
-    background-color: #28a745;
-    color: white;
+.product-card button.add-to-cart {
+    background-color: #f00;
+    color: #fff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Jarak atas tombol dari elemen lain */
 }
 
-.add-to-cart:hover {
-    background-color: #218838;
+.product-card button.add-to-cart:hover {
+    background-color: #c00;
 }
 
-.label {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: red;
-    color: white;
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 3px;
+.product-card .ratings {
+    margin: 10px 0;
+    font-size: 0.9rem;
 }
 
-.sale {
-    background-color: #ff6666;
-}
-
-.buy1get1 {
-    background-color: #ffcc00;
-}
-
-.hot {
-    background-color: #ff3333;
-}
-/* Stats Section */
-.stats-section {
-    background-color: #fff;
-    padding: 50px 0;
-}
-
-.stat-box {
-    text-align: center;
-    color: #333;
-}
-
-.stat-box img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
-}
-
-.stat-box h3 {
-    font-size: 24px;
-    color: #000;
-    margin-bottom: 5px;
-}
-
-.stat-box p {
-    font-size: 16px;
-    color: #666;
-}
-
-/* Swiper Custom Styling */
-.swiper-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.swiper-wrapper {
-    display: flex;
-    justify-content: center;
-}
-
-.swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    flex-shrink: 0;
-}
-
-/* Pagination dots */
-.swiper-pagination-bullet {
-    background-color: #333;
-}
-
-.swiper-pagination-bullet-active {
-    background-color: #000;
-}
-/* Menu Section */
-.menu-section {
-    background-color: #3A5F0B; /* Hijau */
-    padding: 50px 0;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-}
-
-.menu-section h2 {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 30px;
-    color: white;
-}
-
-.menu-grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.menu-column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 45%;
-}
-
-.menu-item {
-    display: flex;
-    background-color: #593D2F; /* Brown */
-    padding: 15px;
-    border-radius: 10px;
-    align-items: center;
-    gap: 15px;
-}
-
-.menu-item img {
-    width: 80px;
-    height: 80px;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-.menu-details h3 {
-    font-size: 18px;
-    margin: 0 0 5px;
-    color: white;
-}
-
-.menu-details p {
-    font-size: 14px;
-    margin: 0;
-    color: #D5D5D5;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .menu-column {
-        width: 100%;
-    }
-
-    .menu-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-.destination-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-  
