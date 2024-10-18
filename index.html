@@ -1,129 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KuyJajan</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <a href="index.html" class="logo"
+        ><img src="img/logo kuyjajan.jpg" alt="KuyJajan Logo"
+      /></a>
 
-   <!-- Header Section -->
-<header>
-    <a href="index.html" class="logo"><img src="img/logo kuyjajan.jpg" alt="KuyJajan Logo"></a>
-    
-    <div class="icons">
-        <div class="icon-item" style="position: relative;">
-            <!-- Kolom Pencarian -->
-            <div id="search-container" style="display: none; position: absolute; left: -220px; top: 0;">
-                <input type="text" placeholder="Search here..." id="search-box" style="padding: 5px; width: 200px;">
-            </div>
-            <a href="#" id="search-icon"><i class="ri-search-line"></i></a>
-            <span>Search</span>
+      <ul class="navbar">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#why-choose-us">Why Choose Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="icons">
+        <div class="icon-item" style="position: relative">
+          <!-- Kolom Pencarian -->
+          <div id="search-container">
+            <input type="text" placeholder="Search here..." id="search-box" />
+          </div>
+          <a href="#" id="search-icon"><i class="ri-search-line"></i></a>
+          <span>Search</span>
         </div>
         <div class="icon-item">
-            <a href="login.html"><i class="ri-user-line"></i></a>
-            <span>Login</span>
+          <a href="login.html"><i class="ri-user-line"></i></a>
+          <span>Login</span>
         </div>
         <div class="icon-item">
-            <a href="#"><i class="ri-shopping-cart-line"></i></a>
-            <span>Cart</span>
+          <a href="#"><i class="ri-shopping-cart-line"></i></a>
+          <span>Cart</span>
         </div>
         <div class="bx bx-menu" id="menu-icon"></div>
-    </div>
-</header>
+      </div>
+    </header>
 
-<!-- Home Section -->
-<section class="home" id="home">
-	<div class="home-text">
-		<h4>Cari Jajanan Favoritmu Disini🔥</h4>
-		<h1>Nikmat & Higienis</h1>
-		<a href="product.html" class="btn">Explore Now!!</a>
-	</div>
-	<div class="home-img">
-		<img src="img/Achievement _Flatline.svg" alt="Achievement">
-	</div>
-</section>
-<section class="why-choose-us">
-    <div class="container">
+    <!-- Home Section -->
+    <section class="home" id="home">
+      <div class="home-text">
+        <h4>Cari Jajanan Favoritmu Disini🔥</h4>
+        <h1>Nikmat & Higienis</h1>
+        <a href="product.html" class="btn">Explore Now!!</a>
+      </div>
+      <div class="home-img">
+        <img src="img/Achievement _Flatline.svg" alt="Achievement" />
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us" id="why-choose-us">
+      <div class="container">
         <h2>Kenapa Harus Jajan di <span>KuyJajan?</span></h2>
-        <p>Fitur dan pelayanan unggulan yang kami persembahkan dengan sepenuh hati untuk setiap pembeli</p>
+        <p>
+          Fitur dan pelayanan unggulan yang kami persembahkan dengan sepenuh
+          hati untuk setiap pembeli.
+        </p>
         <div class="features-grid">
-            <div class="feature-item">
-                <i class="fas fa-stopwatch feature-icon"></i>
-                <h3>Proses Cepat</h3>
-                <p>Tidak butuh waktu lama, dalam 60 detik, kamu bisa mulai berjualan dan terlihat.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-dollar-sign feature-icon"></i>
-                <h3>Harga Terjangkau</h3>
-                <p>Kuy Jajan menyediakan berbagai makanan viral yang sering menjadi buruan, sehingga kamu bisa menikmatinya tanpa harus mengantri panjang seperti di tempat-tempat makanan viral lainnya.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-tags feature-icon"></i>
-                <h3>Promo Menarik</h3>
-                <p>Kuy Jajan sering mengadakan promo menarik seperti diskon atau paket hemat yang membuat pengalaman jajan semakin menyenangkan.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-utensils feature-icon"></i>
-                <h3>Menu Unik yang Kekinian</h3>
-                <p>Kuy Jajan menghadirkan menu-menu yang unik dan kekinian, termasuk variasi makanan dan minuman viral yang hanya ada di tempat ini, menjadikannya destinasi kuliner yang menarik.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-chart-line feature-icon"></i>
-                <h3>Pilihan Makanan Viral yang Selalu Update</h3>
-                <p>Kuy Jajan selalu mengikuti tren makanan terbaru, sehingga kamu bisa mencicipi makanan-makanan viral tanpa harus jauh-jauh mencari.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-store feature-icon"></i>
-                <h3>Sensasi Makanan Hits Tanpa Antri Panjang</h3>
-                <p>Terdapat fitur toko online makanan lengkap dengan info toko, menu, dan review.</p>
-            </div>
+          <div class="feature-item">
+            <i class="fas fa-stopwatch feature-icon"></i>
+            <h3>Proses Cepat</h3>
+            <p>
+              Tidak butuh waktu lama, dalam 60 detik, kamu bisa mulai berjualan
+              dan terlihat.
+            </p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-dollar-sign feature-icon"></i>
+            <h3>Harga Terjangkau</h3>
+            <p>
+              Kuy Jajan menyediakan berbagai makanan viral yang sering menjadi
+              buruan, sehingga kamu bisa menikmatinya tanpa harus mengantri
+              panjang seperti di tempat-tempat makanan viral lainnya.
+            </p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-tags feature-icon"></i>
+            <h3>Promo Menarik</h3>
+            <p>
+              Kuy Jajan sering mengadakan promo menarik seperti diskon atau
+              paket hemat yang membuat pengalaman jajan semakin menyenangkan.
+            </p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-utensils feature-icon"></i>
+            <h3>Menu Unik yang Kekinian</h3>
+            <p>
+              Kuy Jajan menghadirkan menu-menu yang unik dan kekinian, termasuk
+              variasi makanan dan minuman viral yang hanya ada di tempat ini,
+              menjadikannya destinasi kuliner yang menarik.
+            </p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-chart-line feature-icon"></i>
+            <h3>Pilihan Makanan Viral yang Selalu Update</h3>
+            <p>
+              Kuy Jajan selalu mengikuti tren makanan terbaru, sehingga kamu
+              bisa mencicipi makanan-makanan viral tanpa harus jauh-jauh
+              mencari.
+            </p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-store feature-icon"></i>
+            <h3>Sensasi Makanan Hits Tanpa Antri Panjang</h3>
+            <p>
+              Terdapat fitur toko online makanan lengkap dengan info toko, menu,
+              dan review.
+            </p>
+          </div>
         </div>
-    </div>
-</section>
-<section class="leni-snacks-section">
-    <div class="content">
-        <!-- Bagian Kiri: Judul dan Deskripsi Produk -->
-        <div class="left-section">
-            <h2>Apa sih Kuy Jajan?</h2>
-            <p></p>
-            <a href="#" class="cta-button">DAFTAR SEKARANG →</a>
-        </div>
+      </div>
+    </section>
 
-        <!-- Bagian Kanan: Formulir -->
-        <div class="right-section">
-            <form class="form">
-                <label for="name">Name <span>*</span></label>
-                <input type="text" id="name" name="name" required>
+    <script>
+      const searchIcon = document.getElementById("search-icon");
+      const searchContainer = document.getElementById("search-container");
 
-                <label for="email">Email <span>*</span></label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="phone">Phone Number <span>*</span></label>
-                <input type="tel" id="phone" name="phone" required>
-
-                <button type="submit" class="submit-button">Submit</button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<script>
-    const searchIcon = document.getElementById('search-icon');
-    const searchContainer = document.getElementById('search-container');
-
-    searchIcon.addEventListener('click', function(event) {
+      searchIcon.addEventListener("click", function (event) {
         event.preventDefault();
-        if (searchContainer.style.display === 'none') {
-            searchContainer.style.display = 'block';
+        if (searchContainer.style.display === "none") {
+          searchContainer.style.display = "block";
         } else {
-            searchContainer.style.display = 'none';
+          searchContainer.style.display = "none";
         }
-    });
-</script>
+      });
+    </script>
+  </body>
+</html>
