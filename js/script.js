@@ -15,6 +15,7 @@ const cities = {
   Surabaya : "Kota Surabaya adalah ibu kota Provinsi Jawa Timur yang menjadi pusat pemerintahan dan perekonomian sekaligus kota terbesar di provinsi tersebut. Surabaya juga merupakan sebuah kota yang terletak di Provinsi Jawa Timur, Indonesia.",
   Bali : "Bali adalah sebuah provinsi di Indonesia yang terletak pada bagian barat Kepulauan Nusa Tenggara dan beribu kota di Kota Denpasar. Pulau Bali, yang merupakan pulau terbesar di Provinsi Bali, memiliki beberapa julukan, di antaranya Pulau Dewata dan Pulau Seribu Pura.",
   Malang : "Kota Malang adalah sebuah kota yang terletak di Provinsi Jawa Timur, Indonesia, Kota ini merupakan kota terbesar kedua di Jawa Timur setelah Surabaya, dan kota terbesar ke-12 di Indonesia. Kota ini didirikan pada masa Pemerintahan Belanda pada 1 April 1914 dengan E.K Broeveldt sebagai wali kota pertama.",
+  Medan : "Medan, ibu kota Sumatera Utara, Indonesia, adalah pusat ekonomi utama dan tempat perpaduan budaya, yang memadukan pengaruh Melayu, Batak, Tiongkok, dan India.",
 };
 
 // Add event listener for "See More" buttons
