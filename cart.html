@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keranjang Belanja</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <table>
     <thead>
       <tr>
@@ -16,36 +19,96 @@
         <th>Aksi</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td><input type="checkbox" checked></td>
-        <td>
-          <img src="img/seblak.jpg" alt="Produk 1">
-          <p>Seblak</p>
-        </td>
-        <td>Rp120.000</td>
-        <td>
-          <button class="kurang">-</button>
-          <span class="kuantitas">1</span>
-          <button class="tambah">+</button>
-        </td>
-        <td>Rp120.000</td>
-        <td>
-          <button class="hapus">Hapus</button>
-          <button class="lihat-detail">Detail Produk</button>
-        </td>
-      </tr>
-      </tbody>
+    <tbody id="cart-items">
+      <!-- Produk di keranjang akan ditambahkan di sini -->
+    </tbody>
   </table>
-  <div class="voucher">
-    <input type="checkbox" id="voucher">
-    <label for="voucher">Voucher KuyJajan</label>
-    <input type="text" placeholder="Masukkan kode">
-    <button>Gunakan</button>
-  </div>
+
   <div class="total">
-    <p>Total (0 produk): Rp0</p>
+    <p>Total (<span id="total-products">0</span> produk): Rp<span id="total-price">0</span></p>
     <button>Checkout</button>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cartItemsContainer = document.querySelector('#cart-items');
+      const totalProductsElement = document.querySelector('#total-products');
+      const totalPriceElement = document.querySelector('#total-price');
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // Fungsi untuk menyimpan keranjang ke localStorage
+      function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
+
+      // Fungsi untuk menampilkan produk di keranjang
+      function displayCartItems() {
+        let totalPrice = 0;
+        let totalProducts = 0;
+
+        cartItemsContainer.innerHTML = ''; // Kosongkan elemen sebelumnya
+        cart.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td><input type="checkbox" checked></td>
+            <td><p>${item.name}</p></td>
+            <td>Rp${item.price.toLocaleString()}</td>
+            <td>
+              <button class="kurang" data-name="${item.name}">-</button>
+              <span class="kuantitas">${item.quantity}</span>
+              <button class="tambah" data-name="${item.name}">+</button>
+            </td>
+            <td>Rp${(item.price * item.quantity).toLocaleString()}</td>
+            <td>
+              <button class="hapus" data-name="${item.name}">Hapus</button>
+            </td>
+          `;
+          cartItemsContainer.appendChild(row);
+
+          totalPrice += item.price * item.quantity;
+          totalProducts += item.quantity;
+        });
+
+        // Perbarui total harga dan jumlah produk
+        totalPriceElement.textContent = totalPrice.toLocaleString();
+        totalProductsElement.textContent = totalProducts;
+      }
+
+      // Event Listener untuk tombol `kurang`, `tambah`, dan `hapus` di keranjang
+      document.addEventListener('click', function (event) {
+        const name = event.target.getAttribute('data-name');
+
+        if (event.target.classList.contains('kurang')) {
+          const product = cart.find(item => item.name === name);
+          if (product && product.quantity > 1) {
+            product.quantity--;
+          } else {
+            cart = cart.filter(item => item.name !== name);
+          }
+          saveCart();
+          displayCartItems();
+        }
+
+        if (event.target.classList.contains('tambah')) {
+          const product = cart.find(item => item.name === name);
+          if (product) {
+            product.quantity++;
+          }
+          saveCart();
+          displayCartItems();
+        }
+
+        if (event.target.classList.contains('hapus')) {
+          cart = cart.filter(item => item.name !== name);
+          saveCart();
+          displayCartItems();
+        }
+      });
+
+      // Tampilkan produk saat halaman dimuat
+      displayCartItems();
+    });
+  </script>
+
 </body>
 </html>
