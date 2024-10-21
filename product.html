@@ -5,27 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KuyJajan - Product Slider</title>
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <link rel="stylesheet" href="css/style.css">
+ <!-- Swiper CSS -->
+ <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+ <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <!--- Header --->
-  <header>
-    <a href="index.html" class="logo"><img src="img/logo kuyjajan.jpg" alt="KuyJajan Logo"></a>
-    <ul class="navbar">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="product.html" class="active">Product</a></li>
-    </ul>    
-    <div class="icons">
-      <a href="#"><i class="ri-search-line"></i></a>
-      <a href="login.html"><i class="ri-user-line"></i></a>
-      <a href="#"><i class="ri-shopping-cart-line"></i></a>
-      <div class="bx bx-menu" id="menu-icon"></div>
+ <!-- Header -->
+ <header>
+   <a href="index.html" class="logo"><img src="img/logo kuyjajan.jpg" alt="KuyJajan Logo"></a>
+   <ul class="navbar">
+     <li><a href="index.html">Home</a></li>
+     <li><a href="about.html">About</a></li>
+     <li><a href="product.html" class="active">Product</a></li>
+   </ul>    
+   <div class="icons">
+     <a href="#"><i class="ri-search-line"></i></a>
+     <a href="login.html"><i class="ri-user-line"></i></a>
+     <div class="bx bx-menu" id="menu-icon"></div>
+
+     <div class="icons">
+      <div class="icon-item" style="position: relative">
+        <a href="cart.html"><i class="ri-shopping-cart-line">Cart</i></a>
+        <span class="cart-count">0</span> <!-- Tambahkan elemen ini -->
+      </div>
     </div>
-  </header>
+    
+   </div>
+  
+ </header>
 
   <!-- Product Slider Section -->
   <section class="popular-products">
@@ -43,7 +51,7 @@
           <span class="discount-price">Rp.30.000</span>
           <span class="original-price">Rp.45.000</span>
         </div>
-        <button class="add-to-cart">+ Add</button>
+        <button class="add-to-cart" data-id="1" data-name="Seblak" data-price="30000">+ Add</button>
       </div>
 
       <!-- Bakpia -->
@@ -57,7 +65,7 @@
           <span class="discount-price">Rp.35.000</span>
           <span class="original-price">Rp.70.000</span>
         </div>
-        <button class="add-to-cart">+ Add</button>
+        <button class="add-to-cart" data-id="2" data-name="Bakpia" data-price="35000">+ Add</button>
       </div>
 
       <!-- Bakso Malang -->
@@ -71,7 +79,7 @@
           <span class="discount-price">Rp.50.000</span>
           <span class="original-price">Rp.70.000</span>
         </div>
-        <button class="add-to-cart">+ Add</button>
+        <button class="add-to-cart" data-id="3" data-name="Bakso Malang" data-price="50000">+ Add</button>
       </div>
 
       <!-- Lumpia -->
@@ -85,7 +93,7 @@
           <span class="discount-price">Rp.30.000</span>
           <span class="original-price">Rp.50.000</span>
         </div>
-        <button class="add-to-cart">+ Add</button>
+        <button class="add-to-cart" data-id="4" data-name="Lumpia" data-price="30000">+ Add</button>
       </div>
 
       <!-- Nasi Uduk -->
@@ -99,7 +107,7 @@
           <span class="discount-price">Rp.25.000</span>
           <span class="original-price">Rp.50.000</span>
         </div>
-        <button class="add-to-cart">+ Add</button>
+        <button class="add-to-cart" data-id="5" data-name="Nasi Uduk" data-price="25000">+ Add</button>
       </div>
 
       <!-- Basreng -->
@@ -113,7 +121,7 @@
           <span class="discount-price">Rp.25.000</span>
           <span class="original-price">Rp.50.000</span>
         </div>
-        <button class="add-to-cart">+ Add</button>
+        <button class="add-to-cart" data-id="6" data-name="Basreng" data-price="25000">+ Add</button>
       </div>
 
       <!-- Batagor -->
@@ -127,7 +135,7 @@
           <span class="discount-price">Rp.25.000</span>
           <span class="original-price">Rp.50.000</span>
         </div>
-        <button class="add-to-cart">+ Add</button>
+        <button class="add-to-cart" data-id="7" data-name="Batagor" data-price="25000">+ Add</button>
       </div>
 
       <!-- Dimsum -->
@@ -141,7 +149,7 @@
           <span class="discount-price">Rp.35.000</span>
           <span class="original-price">Rp.60.000</span>
         </div>
-        <button class="add-to-cart">+ Add</button>
+        <button class="add-to-cart" data-id="8" data-name="Dimsum" data-price="35000">+ Add</button>
       </div>
 
       <!-- Gohyong -->
@@ -155,7 +163,7 @@
           <span class="discount-price">Rp.20.000</span>
           <span class="original-price">Rp.35.000</span>
         </div>
-        <button class="add-to-cart">+ Add</button>
+        <button class="add-to-cart" data-id="9" data-name="Gohyong" data-price="20000">+ Add</button>
       </div>
     </div>
   </section>
@@ -305,5 +313,52 @@
   </div>
   <!-- Copyright -->
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Fungsi untuk menambahkan produk ke keranjang
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const productId = this.getAttribute('data-id');
+        const productName = this.getAttribute('data-name');
+        const productPrice = parseFloat(this.getAttribute('data-price'));
+
+        // Cari produk di keranjang
+        let productInCart = cart.find(item => item.id === productId);
+        
+        // Jika produk sudah ada, tambahkan kuantitasnya
+        if (productInCart) {
+          productInCart.quantity += 1;
+        } else {
+          // Jika produk belum ada, tambahkan produk baru ke keranjang
+          const product = { id: productId, name: productName, price: productPrice, quantity: 1 };
+          cart.push(product);
+        }
+
+        // Simpan kembali ke localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Perbarui jumlah item di ikon keranjang
+        updateCartCount();
+
+        // Notifikasi
+        alert(`${productName} berhasil ditambahkan ke keranjang!`);
+      });
+    });
+
+    // Fungsi untuk memperbarui jumlah item di ikon keranjang
+    function updateCartCount() {
+      const cartCountElement = document.querySelector('.cart-count');
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCountElement.textContent = totalItems;
+    }
+
+    // Panggil saat halaman dimuat
+    updateCartCount();
+  });
+</script>
 
 </html>
