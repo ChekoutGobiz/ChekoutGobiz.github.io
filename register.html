@@ -14,19 +14,116 @@
     
     <!-- Link file CSS -->
     <link rel="stylesheet" href="css/login.css">
+
+    <style>
+        /* Atur agar container mencakup seluruh layar */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .left-side {
+            background-color: #f5f7fa;
+            width: 50%; /* 50% layar untuk gambar */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        .food-image {
+            max-width: 100%; /* Gambar diatur agar tidak melebihi lebar container */
+            height: auto;    /* Menjaga aspek rasio gambar */
+            border-radius: 20px; /* Membuat gambar lebih rapi dengan rounded corner */
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada gambar */
+        }
+
+        .kuyjajan-text {
+            font-size: 1.5rem;
+            color: white;
+            position: absolute;
+            top: 0px;
+            left: 20px;
+            background-color: none; /* Tambahkan background semi transparan untuk teks */
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .right-side {
+            width: 50%; /* 50% layar untuk form register */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; /* Warna latar untuk form */
+        }
+
+        .box-register {
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling form */
+        .inp {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .inp input {
+            width: 100%;
+            padding: 10px 40px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .inp i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2563eb;
+        }
+    </style>
 </head>
 <body>
-    <div class="contanier">
+    <div class="left-side">
+        <img src="img/register.png" alt="Food Image" class="food-image"> <!-- Gambar untuk register -->
+        <h1 class="kuyjajan-text">KuyJajan</h1> <!-- KuyJajan di bawah gambar -->
+    </div>
 
-        <div class="text">
-            <img src="img/Achievement _Flatline.svg" alt="">
-            <h1>KuyJajan</h1>
-        </div>
-
-        <div class="box-login">
+    <div class="right-side">
+        <div class="box-register">
             <div class="login">
                 <div class="header">
-                    <h2>Hello ! New User</h2>
+                    <h2>Hello! New User</h2>
                 </div>
 
                 <!-- Ubah form agar tidak mengarahkan ke halaman lain -->
@@ -49,49 +146,50 @@
                         <i class="fa-solid fa-lock"></i>
                         <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
                     </div>
-<!-- Ubah button agar bisa submit menggunakan JS -->
-<button type="submit">Register</button>
-</form>
 
-<p class="creat-ac">Already Have an Account? <a href="login.html"> Sign In</a></p>
-</div>
-</div>
-</div>
+                    <!-- Ubah button agar bisa submit menggunakan JS -->
+                    <button type="submit">Register</button>
+                </form>
 
-<script>
-    // Handle Register Form Submit
-    document.getElementById("registerForm").addEventListener("submit", async function(event) {
-        event.preventDefault();  // Mencegah form submit secara default
+                <p class="creat-ac">Already Have an Account? <a href="login.html"> Sign In</a></p>
+            </div>
+        </div>
+    </div>
 
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+    <script>
+        // Handle Register Form Submit
+        document.getElementById("registerForm").addEventListener("submit", async function(event) {
+            event.preventDefault();  // Mencegah form submit secara default
 
-        try {
-            const response = await fetch('http://localhost:8080/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    password: password
-                })
-            });
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
 
-            if (!response.ok) {
-                throw new Error('Registration failed');
+            try {
+                const response = await fetch('http://localhost:8080/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        password: password
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Registration failed');
+                }
+
+                // Redirect user to login page if registration is successful
+                alert('Yeayyyyy Register Berhasillllll. Saatnya Loginnnnnn');
+                window.location.href = 'login.html';  // Redirect ke halaman login
+            } catch (error) {
+                alert('Terjadi kesalahan pada server.');
+                console.error('Error:', error);
             }
-
-            // Redirect user to login page if registration is successful
-            alert('Yeayyyyy Register Berhasillllll. Saatnya Loginnnnnn');
-            window.location.href = 'login.html';  // Redirect ke halaman login
-        } catch (error) {
-            alert('Terjadi kesalahan pada server.');
-            console.error('Error:', error);
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
