@@ -29,32 +29,69 @@
                     <h2>Hello ! New User</h2>
                 </div>
 
-                <form action="login.html" method="post">
+                <!-- Ubah form agar tidak mengarahkan ke halaman lain -->
+                <form id="registerForm">
 
                     <label for="name">Nama</label>
                     <div class="inp">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Enter Your Name">
+                        <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
                     </div>
 
                     <label for="email">Email</label>
                     <div class="inp">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" placeholder="Enter Your Email">
+                        <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
                     </div>
 
                     <label for="password">Password</label>
                     <div class="inp">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" placeholder="Enter Your Password">
+                        <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
                     </div>
+<!-- Ubah button agar bisa submit menggunakan JS -->
+<button type="submit">Register</button>
+</form>
 
-                    <a href="login.html"><button>Register</button></a>
-                </form>
+<p class="creat-ac">Already Have an Account? <a href="login.html"> Sign In</a></p>
+</div>
+</div>
+</div>
 
-                <p class="creat-ac">Already Have an Account? <a href="login.html"> Sign In</a></p>
-            </div>
-        </div>
-    </div>
+<script>
+    // Handle Register Form Submit
+    document.getElementById("registerForm").addEventListener("submit", async function(event) {
+        event.preventDefault();  // Mencegah form submit secara default
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        try {
+            const response = await fetch('http://localhost:8080/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Registration failed');
+            }
+
+            // Redirect user to login page if registration is successful
+            alert('Yeayyyyy Register Berhasillllll. Saatnya Loginnnnnn');
+            window.location.href = 'login.html';  // Redirect ke halaman login
+        } catch (error) {
+            alert('Terjadi kesalahan pada server.');
+            console.error('Error:', error);
+        }
+    });
+</script>
 </body>
 </html>
