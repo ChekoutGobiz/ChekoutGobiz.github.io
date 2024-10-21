@@ -29,18 +29,19 @@
                     <h2>Hello!! Welcome Back</h2>
                 </div>
 
-                <form action="index.html" method="post">
+                <!-- Form tidak menggunakan action, akan diproses dengan JavaScript -->
+                <form id="loginForm">
 
                     <label for="email">Email</label>
                     <div class="inp">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" placeholder="Enter Your Email">
+                        <input type="email" id="email" placeholder="Enter Your Email" required>
                     </div>
 
                     <label for="password">Password</label>
                     <div class="inp">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" placeholder="Enter Your Password">
+                        <input type="password" id="password" placeholder="Enter Your Password" required>
                     </div>
 
                     <div class="check-box">
@@ -51,12 +52,61 @@
                         <a href="#" class="forg">Forgot Password?</a>
                     </div>
 
-                    <a href="index.html"><button>Login</button></a>
+                    <!-- Tombol Login -->
+                    <button type="submit">Login</button>
                 </form>
 
                 <p class="creat-ac">Don't Have an Account? <a href="register.html"> Create Account</a></p>
             </div>
         </div>
     </div>
+
+    <!-- Script JavaScript untuk login -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Ambil nilai dari input email dan password
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Lakukan permintaan ke backend dengan fetch API
+                const response = await fetch('http://localhost:8080/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                });
+
+                // Cek status respons dari backend
+                if (!response.ok) {
+                    throw new Error('Login failed: ' + response.status);
+                }
+
+                // Parsing JSON respons
+                const data = await response.json();
+
+                // Simpan token JWT ke localStorage (jika ada)
+                if (data.token) {
+                    localStorage.setItem('token', data.token);
+                    alert('Login berhasil!');
+                    
+                    // Arahkan pengguna ke halaman utama atau dashboard
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Login gagal, token tidak ditemukan.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan: ' + error.message);
+            }
+        });
+    </script>
+
 </body>
 </html>
