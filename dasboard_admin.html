@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eatland Dashboard</title>
+    <title>KuyJajan Dashboard</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -32,7 +32,7 @@
                     <span class="font-semibold">Home</span>
                 </a>
                 <a href="product.html" class="flex items-center space-x-2">
-                    <span>🍽️</span>
+                    <span>🍽</span>
                     <span>Produk</span>
                 </a>
                 <a href="about.html" class="flex items-center space-x-2">
@@ -40,7 +40,7 @@
                     <span>Tentang kami</span>
                 </a>
                 <a href="#" class="flex items-center space-x-2">
-                    <span>⚙️</span>
+                    <span>⚙</span>
                     <span>Settings</span>
                 </a>
             </nav>
@@ -56,21 +56,12 @@
                 <h1 class="text-3xl font-bold text-gray-800">Welcome to Kuyjajan <span>😋</span></h1>
             </header>
 
-            <!-- Food Categories -->
-            <div class="flex space-x-4 mb-8">
-                <button class="py-2 px-4 bg-gray-100 rounded-full">All</button>
-                <button class="py-2 px-4 bg-white shadow-md rounded-full">Burgers</button>
-                <button class="py-2 px-4 bg-white shadow-md rounded-full">Pizza</button>
-                <button class="py-2 px-4 bg-white shadow-md rounded-full">Salads</button>
-                <button class="py-2 px-4 bg-white shadow-md rounded-full">Deserts</button>
-                <button class="py-2 px-4 bg-white shadow-md rounded-full">Drinks</button>
-            </div>
-
             <!-- All Items -->
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold">All items</h2>
-                <button class="text-gray-500">View all →</button>
+                <button class="text-gray-500 hover:underline" onclick="window.location.href='product.html'">View all →</button>
             </div>
+            
 
             <div class="grid grid-cols-3 gap-6">
                 <!-- Item 1 -->
