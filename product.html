@@ -64,6 +64,22 @@
   
  </header>
 
+ <!-- Filter by City -->
+<section class="filter-section">
+  <label for="cityFilter">Filter by City:</label>
+  <select id="cityFilter">
+    <option value="all">All Cities</option>
+    <option value="Bandung">Bandung</option>
+    <option value="Yogyakarta">Yogyakarta</option>
+    <option value="Malang">Malang</option>
+    <option value="Semarang">Semarang</option>
+    <option value="Aceh">Aceh</option>
+    <option value="Medan">Medan</option>
+    <option value="Bali">Bali</option>
+  </select>
+</section>
+
+
   <!-- Product Slider Section -->
   <section class="popular-products">
     <h2>Makanan</h2>
@@ -200,7 +216,7 @@
       <span class="label sale">Sale</span>
       <img src="img/mieaceh.png" alt="Gohyong">
       <h3>Mie Aceh</h3>
-      <p>Mie Aceh biasanya disajikan dalam dua variasi, yaitu Mie Aceh Goreng (digoreng) dan Mie Aceh Kuah (dengan kuah kaldu).</p>
+      <p>Mie Aceh biasanya disajikan dalam dua variasi, Mie Aceh Goreng (digoreng) dan Mie Aceh Kuah (dengan kuah kaldu).</p>
       <div class="ratings">★★★★☆ 4.3 (4)</div>
       <div class="price">
         <span class="discount-price">Rp.40.000</span>
@@ -214,7 +230,7 @@
       <span class="label sale">Sale</span>
       <img src="img/sotomedan.jpeg" alt="SotoMedan">
       <h3>Soto Medan</h3>
-      <p>Soto Medan memiliki kuah yang kental dan kaya dengan santan. Biasanya disajikan dengan daging ayam atau sapi, dan pelengkap seperti telur rebus, emping, dan kentang goreng.</p>
+      <p>Soto Medan memiliki kuah yang kental dan kaya dengan santan. Disajikan dengan daging ayam atau sapi.</p>
       <div class="ratings">★★★★☆ 4.3 (4)</div>
       <div class="price">
         <span class="discount-price">Rp.20.000</span>
@@ -228,7 +244,7 @@
       <span class="label sale">Sale</span>
       <img src="img/ayambetutu.webp" alt="AyamBetutu">
       <h3>Ayam Betutu</h3>
-      <p>Ayam Betutu adalah hidangan ayam yang dimasak dengan bumbu khas Bali seperti bawang merah, bawang putih, kunyit, jahe, lengkuas, dan cabai.</p>
+      <p>Hidangan ayam yang dimasak dengan bumbu khas Bali seperti bawang merah, bawang putih, kunyit, jahe.</p>
       <div class="ratings">★★★★☆ 4.3 (4)</div>
       <div class="price">
         <span class="discount-price">Rp.35.000</span>
@@ -431,5 +447,33 @@
     updateCartCount();
   });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const cityFilter = document.getElementById('cityFilter');
+    const productCards = document.querySelectorAll('.product-card');
+
+    // Function to filter products by selected city
+    function filterProductsByCity() {
+      const selectedCity = cityFilter.value;
+
+      productCards.forEach(function (card) {
+        const productCity = card.getAttribute('data-city');
+        
+        if (selectedCity === 'all' || productCity === selectedCity) {
+          card.style.display = 'block'; // Show product
+        } else {
+          card.style.display = 'none'; // Hide product
+        }
+      });
+    }
+
+    // Event listener for dropdown change
+    cityFilter.addEventListener('change', filterProductsByCity);
+
+    // Initial filter (optional, shows all products by default)
+    filterProductsByCity();
+  });
+</script>
+
 
 </html>
