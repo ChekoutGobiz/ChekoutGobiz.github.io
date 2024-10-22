@@ -9,12 +9,36 @@
  <!-- Swiper CSS -->
  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
  <link rel="stylesheet" href="css/style.css">
-</head>
-<head>
-  <!-- Tambahkan link ke Remix Icon -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 </head>
 
+<style>
+  .icon-item {
+    position: relative;
+    display: inline-block;
+  }
+
+  .ri-shopping-cart-line {
+    font-size: 32px; /* Sesuaikan ukuran ikon agar lebih terlihat */
+    color: #990583; /* Warna ikon */
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -10px; /* Posisikan lebih ke atas */
+    right: -10px; /* Posisikan lebih ke kanan */
+    background-color: #00ff48; /* Warna biru */
+    color: white;
+    font-size: 10px; /* Ukuran teks */
+    border-radius: 15px; /* Bentuk bulat */
+    padding: 2px 6px; /* Spasi dalam */
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Efek bayangan */
+  }
+</style>
 
 <body>
  <!-- Header -->
@@ -26,13 +50,12 @@
      <li><a href="product.html" class="active">Product</a></li>
    </ul>    
    <div class="icons">
-     <a href="#"><i class="ri-search-line"></i></a>
-     <a href="login.html"><i class="ri-user-line"></i></a>
+     
      <div class="bx bx-menu" id="menu-icon"></div>
 
      <div class="icons-item">
       <div class="icon-item" style="position: relative">
-        <a href="cart.html"><i class="ri-shopping-cart-line">Cart</i></a>
+        <a href="cart.html"><i class="ri-shopping-cart-line"></i></a>
         <span class="cart-count">0</span> <!-- Tambahkan elemen ini -->
       </div>
     </div>
