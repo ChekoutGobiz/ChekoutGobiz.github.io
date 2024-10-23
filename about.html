@@ -35,80 +35,69 @@
 
     <section class="destination-section">
         <div class="container">
-            <h2>
-                <i class="fas fa-suitcase"></i> Temukan Yang Kamu Suka di Asia Hingga Dunia
-            </h2>
+            <h2>Temukan Yang Kamu Suka di Asia Hingga Dunia</h2>
             <div class="destination-grid">
-                <div class="destination-item">
-                    <img src="img/bandung.jpg" alt="Bandung" class="destination-img" onclick="toggleDescription('bandungDescription')" />
+                <div class="destination-item" onclick="goToProduct('Bandung')">
+                    <img src="img/bandung.jpg" alt="Bandung" class="destination-img" />
                     <div class="destination-info">
                         <h3>Bandung</h3>
-                        <p>644 accommodations</p>
-                        <p id="bandungDescription" class="description" style="display: none;">Bandung is known for its cool climate, beautiful landscapes, and culinary delights.</p>
                     </div>
                 </div>
-                <div class="destination-item">
-                    <img src="img/jakarta.jpg" alt="Jakarta" class="destination-img" onclick="toggleDescription('jakartaDescription')" />
+
+                <div class="destination-item" onclick="goToProduct('Jakarta')">
+                    <img src="img/jakarta.jpg" alt="Jakarta" class="destination-img" />
                     <div class="destination-info">
                         <h3>Jakarta</h3>
                         <p>8,371 accommodations</p>
-                        <p id="jakartaDescription" class="description" style="display: none;">Jakarta is the bustling capital of Indonesia, known for its vibrant culture and modern skyline.</p>
                     </div>
                 </div>
-                <div class="destination-item">
-                    <img src="img/jogja.jpeg" alt="Jogja" class="destination-img" onclick="toggleDescription('jogjaDescription')" />
+                <div class="destination-item" onclick="goToProduct('Yogyakarta')">
+                    <img src="img/jogja.jpeg" alt="Jogja" class="destination-img" />
                     <div class="destination-info">
                         <h3>Yogyakarta</h3>
                         <p>27,449 accommodations</p>
-                        <p id="jogjaDescription" class="description" style="display: none;">Jogja is famous for its rich history, culture, and traditional arts.</p>
                     </div>
                 </div>
-                <div class="destination-item">
-                    <img src="img/semarang.png" alt="Semarang" class="destination-img" onclick="toggleDescription('semarangDescription')" />
+                <div class="destination-item" onclick="goToProduct('Semarang')">
+                    <img src="img/semarang.png" alt="Semarang" class="destination-img" />
                     <div class="destination-info">
                         <h3>Semarang</h3>
                         <p>15,929 accommodations</p>
-                        <p id="semarangDescription" class="description" style="display: none;">Semarang is known for its blend of colonial and modern architecture, as well as its culinary scene.</p>
                     </div>
                 </div>
-                <div class="destination-item">
-                    <img src="img/surabaya.jpeg" alt="Surabaya" class="destination-img" onclick="toggleDescription('surabayaDescription')" />
+                <div class="destination-item" onclick="goToProduct('Surabaya')">
+                    <img src="img/surabaya.jpeg" alt="Surabaya" class="destination-img" />
                     <div class="destination-info">
                         <h3>Surabaya</h3>
                         <p>28,141 accommodations</p>
-                        <p id="surabayaDescription" class="description" style="display: none;">Surabaya is the capital of East Java, known for its bustling port and rich history.</p>
                     </div>
                 </div>
-                <div class="destination-item">
-                    <img src="img/malang.jpg" alt="Malang" class="destination-img" onclick="toggleDescription('malangDescription')" />
+                <div class="destination-item" onclick="goToProduct('Malang')">
+                    <img src="img/malang.jpg" alt="Malang" class="destination-img" />
                     <div class="destination-info">
                         <h3>Malang</h3>
                         <p>960 accommodations</p>
-                        <p id="malangDescription" class="description" style="display: none;">Malang is famous for its cool weather and stunning natural scenery, including mountains and waterfalls.</p>
                     </div>
                 </div>
-                <div class="destination-item">
-                    <img src="img/bali.jpeg" alt="Bali" class="destination-img" onclick="toggleDescription('baliDescription')" />
+                <div class="destination-item" onclick="goToProduct('Bali')">
+                    <img src="img/bali.jpeg" alt="Bali" class="destination-img" />
                     <div class="destination-info">
                         <h3>Bali</h3>
                         <p>960 accommodations</p>
-                        <p id="baliDescription" class="description" style="display: none;">Bali is renowned for its beautiful beaches, vibrant culture, and stunning temples.</p>
                     </div>
                 </div>
-                <div class="destination-item">
-                    <img src="img/padang.jpeg" alt="Padang" class="destination-img" onclick="toggleDescription('padangDescription')" />
+                <div class="destination-item" onclick="goToProduct('Padang')">
+                    <img src="img/padang.jpeg" alt="Padang" class="destination-img" />
                     <div class="destination-info">
                         <h3>Padang</h3>
                         <p>960 accommodations</p>
-                        <p id="padangDescription" class="description" style="display: none;">Padang is famous for its delicious cuisine, especially rendang and other Minangkabau dishes.</p>
                     </div>
                 </div>
-                <div class="destination-item">
-                    <img src="img/medan.jpg" alt="Padang" class="destination-img" onclick="toggleDescription('medanDescription')" />
+                <div class="destination-item" onclick="goToProduct('Medan')">
+                    <img src="img/medan.jpg" alt="Medan" class="destination-img" />
                     <div class="destination-info">
                         <h3>Medan</h3>
                         <p>177 accommodations</p>
-                        <p id="medanDescription" class="description" style="display: none;">Medan, the capital of North Sumatra, Indonesia, is a major economic hub and cultural melting pot, blending Malay, Batak, Chinese, and Indian influences.</p>
                     </div>
                 </div>
             </div>
@@ -116,13 +105,11 @@
     </section>
 
     <script>
-        function toggleDescription(descriptionId) {
-            const description = document.getElementById(descriptionId);
-            if (description.style.display === "none") {
-                description.style.display = "block";
-            } else {
-                description.style.display = "none";
-            }
+        function goToProduct(cityName) {
+            // Simpan kota yang dipilih di localStorage
+            localStorage.setItem('selectedCity', cityName);
+            // Redirect ke halaman product.html
+            window.location.href = 'product.html';
         }
     </script>
 </body>
