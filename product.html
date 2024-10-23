@@ -10,6 +10,15 @@
  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
  <link rel="stylesheet" href="css/style.css">
  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+ <link
+        rel="stylesheet"
+        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"/>
 </head>
 
 <style>
@@ -63,6 +72,94 @@
    </div>
   
  </header>
+
+ <section class="product-section">
+  <div class="container">
+      <h2>List tersedia</h2>
+      <div id="product-grid" class="product-grid">
+          <!-- Produk makanan akan ditampilkan di sini -->
+      </div>
+  </div>
+</section>
+
+<script>
+  const products = {
+      Bandung: [
+          { name: "Batagor", image: "img/batagor.png" },
+          { name: "Seblak", image: "img/seblak.jpg" },
+          { name: "Basreng", image: "img/basreng.jpeg" }
+      ],
+      Jakarta: [
+          { name: "Kerak Telor", image: "img/keraktelor.jpg" },
+          { name: "Ketoprak", image: "img/ketoprak.jpg" },
+          { name: "Nasi Uduk", image: "img/nasi uduk.png" }
+      ],
+      Yogyakarta: [
+          { name: "Gudeg", image: "img/makanan/gudeg.jpg" },
+          { name: "Bakpia", image: "img/makanan/bakpia.jpg" }
+      ],
+      // Tambahkan kota dan makanan lain di sini
+  };
+
+  function displayProducts(city) {
+      const productGrid = document.getElementById("product-grid");
+
+      // Bersihkan produk yang sudah ada sebelumnya
+      productGrid.innerHTML = "";
+
+      // Periksa apakah ada produk untuk kota yang dipilih
+      if (products[city]) {
+          products[city].forEach((product) => {
+              const productItem = document.createElement("div");
+              productItem.classList.add("product-item");
+
+              // Template produk yang akan ditampilkan
+              productItem.innerHTML = `
+                  <img src="${product.image}" alt="${product.name}" class="product-img" />
+                  <div class="product-info">
+                      <h3>${product.name}</h3>
+                  </div>
+              `;
+
+              // Tambahkan produk ke grid
+              productGrid.appendChild(productItem);
+          });
+      } else {
+          productGrid.innerHTML = "";
+      }
+  }
+
+  // Simulasikan pemilihan kota dari halaman about
+  // Misalnya, ketika Bandung dipilih, panggil fungsi ini:
+  displayProducts("Bandung");
+
+  // Di sini kamu bisa menambahkan logika untuk menangkap pemilihan kota
+  // Misal dari halaman lain atau dari dropdown selector.
+</script>
+
+<style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product-item {
+            text-align: center;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-item p {
+            margin-top: 10px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+    </style>
 
 
   <!-- Product Slider Section -->
