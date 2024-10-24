@@ -1,63 +1,108 @@
 package controllers
 
 import (
-    "context"
-    "net/http"
-    "time"
+	"context"
+	"encoding/json"
+	"net/http"
+	"os"
+	"time"
 
-    "go.mongodb.org/mongo-driver/bson"
-    "go.mongodb.org/mongo-driver/mongo"
-    "yourapp/models" // Ganti dengan path yang sesuai
+	"github.com/kuyjajan/kuyjajan-backend/models"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+	"log"
+	"github.com/joho/godotenv"
 )
 
-type CartController struct {
-    CartCollection *mongo.Collection
+var cartCollection *mongo.Collection
+var cartClient *mongo.Client
+
+func init() {
+	// Load .env file
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	// Ambil MONGODB_URI dari environment
+	mongoURI := os.Getenv("MONGODB_URI")
+
+	// Opsi koneksi MongoDB
+	clientOptions := options.Client().ApplyURI(mongoURI)
+	cartClient, err = mongo.Connect(context.TODO(), clientOptions)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Cek koneksi MongoDB
+	err = cartClient.Ping(context.TODO(), nil)
+	if err != nil {
+		log.Fatal("Failed to connect to MongoDB:", err)
+	}
+
+	// Inisialisasi koleksi cart
+	cartCollection = cartClient.Database("jajankuy").Collection("carts")
 }
 
-func NewCartController(cartCollection *mongo.Collection) *CartController {
-    return &CartController{CartCollection: cartCollection}
+// AddToCart menambahkan item ke dalam keranjang
+func AddToCart(w http.ResponseWriter, r *http.Request) {
+	var cartItem models.CartItem
+	var cart models.Cart
+
+	if err := json.NewDecoder(r.Body).Decode(&cartItem); err != nil {
+		http.Error(w, "Invalid data", http.StatusBadRequest)
+		return
+	}
+
+	// Assume user is authenticated and we get the user ID (This should be handled via JWT authentication)
+	userID, _ := primitive.ObjectIDFromHex("USER_ID") // Gantilah dengan ID pengguna dari JWT
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	// Temukan keranjang user
+	err := cartCollection.FindOne(ctx, bson.M{"user_id": userID}).Decode(&cart)
+	if err == mongo.ErrNoDocuments {
+		// Jika keranjang belum ada, buat baru
+		cart.ID = primitive.NewObjectID()
+		cart.UserID = userID
+		cart.Items = []models.CartItem{cartItem}
+		_, err := cartCollection.InsertOne(ctx, cart)
+		if err != nil {
+			http.Error(w, "Failed to add to cart", http.StatusInternalServerError)
+			return
+		}
+	} else {
+		// Tambahkan item ke keranjang yang sudah ada
+		cart.Items = append(cart.Items, cartItem)
+		_, err := cartCollection.UpdateOne(ctx, bson.M{"user_id": userID}, bson.M{"$set": bson.M{"items": cart.Items}})
+		if err != nil {
+			http.Error(w, "Failed to update cart", http.StatusInternalServerError)
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(cart)
 }
 
-// Tambahkan item ke keranjang
-func (cc *CartController) AddToCart(w http.ResponseWriter, r *http.Request) {
-    var cartItem models.CartItem
-    if err := json.NewDecoder(r.Body).Decode(&cartItem); err != nil {
-        http.Error(w, err.Error(), http.StatusBadRequest)
-        return
-    }
+// GetCart mengambil keranjang user
+func GetCart(w http.ResponseWriter, r *http.Request) {
+	// Assume user is authenticated and we get the user ID (handled via JWT)
+	userID, _ := primitive.ObjectIDFromHex("USER_ID") // Gantilah dengan ID pengguna dari JWT
 
-    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-    defer cancel()
+	var cart models.Cart
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
-    _, err := cc.CartCollection.InsertOne(ctx, cartItem)
-    if err != nil {
-        http.Error(w, "Gagal menambahkan ke keranjang", http.StatusInternalServerError)
-        return
-    }
+	err := cartCollection.FindOne(ctx, bson.M{"user_id": userID}).Decode(&cart)
+	if err != nil {
+		http.Error(w, "Cart not found", http.StatusNotFound)
+		return
+	}
 
-    w.WriteHeader(http.StatusCreated)
-    json.NewEncoder(w).Encode(cartItem)
-}
-
-// Ambil semua item di keranjang
-func (cc *CartController) GetCartItems(w http.ResponseWriter, r *http.Request) {
-    var cartItems []models.CartItem
-    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-    defer cancel()
-
-    cursor, err := cc.CartCollection.Find(ctx, bson.M{})
-    if err != nil {
-        http.Error(w, "Gagal mendapatkan item keranjang", http.StatusInternalServerError)
-        return
-    }
-    defer cursor.Close(ctx) // Tutup cursor setelah selesai
-
-    if err := cursor.All(ctx, &cartItems); err != nil {
-        http.Error(w, "Gagal memproses data keranjang", http.StatusInternalServerError)
-        return
-    }
-
-    w.Header().Set("Content-Type", "application/json")
-    w.WriteHeader(http.StatusOK)
-    json.NewEncoder(w).Encode(cartItems)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(cart)
 }

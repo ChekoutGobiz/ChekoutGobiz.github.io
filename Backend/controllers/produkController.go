@@ -1,60 +1,97 @@
 package controllers
 
 import (
-    "context"
-    "net/http"
-    "time"
+	"context"
+	"encoding/json"
+	"log"
+	"net/http"
+	"os"
+	"time"
 
-    "github.com/gin-gonic/gin"
-    "go.mongodb.org/mongo-driver/bson"
-    "go.mongodb.org/mongo-driver/mongo"
-    "yourapp/models"
+	"github.com/kuyjajan/kuyjajan-backend/models"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+	"github.com/joho/godotenv"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type ProductController struct {
-    ProductCollection *mongo.Collection
+var productCollection *mongo.Collection
+var productClient *mongo.Client
+
+func init() {
+	// Load .env file
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	// Ambil MONGODB_URI dari environment
+	mongoURI := os.Getenv("MONGODB_URI")
+
+	// Opsi koneksi MongoDB
+	clientOptions := options.Client().ApplyURI(mongoURI)
+	productClient, err = mongo.Connect(context.TODO(), clientOptions)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Cek koneksi MongoDB
+	err = productClient.Ping(context.TODO(), nil)
+	if err != nil {
+		log.Fatal("Failed to connect to MongoDB:", err)
+	}
+
+	// Inisialisasi koleksi produk
+	productCollection = productClient.Database("jajankuy").Collection("products")
 }
 
-func NewProductController(productCollection *mongo.Collection) *ProductController {
-    return &ProductController{ProductCollection: productCollection}
+// CreateProduct handles the creation of a new product
+func CreateProduct(w http.ResponseWriter, r *http.Request) {
+	var product models.Product
+	if err := json.NewDecoder(r.Body).Decode(&product); err != nil {
+		http.Error(w, "Invalid data", http.StatusBadRequest)
+		return
+	}
+
+	if !product.Validate() {
+		http.Error(w, "Invalid product data", http.StatusBadRequest)
+		return
+	}
+
+	product.ID = primitive.NewObjectID()
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	_, err := productCollection.InsertOne(ctx, product)
+	if err != nil {
+		http.Error(w, "Failed to insert product", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(product)
 }
 
-// Buat produk baru
-func (p *ProductController) CreateProduct(c *gin.Context) {
-    var product models.Product
-    if err := c.ShouldBindJSON(&product); err != nil {
-        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-        return
-    }
+// GetProducts retrieves all products from the database
+func GetProducts(w http.ResponseWriter, r *http.Request) {
+	var products []models.Product
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
-    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-    defer cancel()
+	cursor, err := productCollection.Find(ctx, bson.M{})
+	if err != nil {
+		http.Error(w, "Failed to get products", http.StatusInternalServerError)
+		return
+	}
 
-    _, err := p.ProductCollection.InsertOne(ctx, product)
-    if err != nil {
-        c.JSON(http.StatusInternalServerError, gin.H{"error": "Gagal menambahkan produk"})
-        return
-    }
+	defer cursor.Close(ctx)
+	for cursor.Next(ctx) {
+		var product models.Product
+		cursor.Decode(&product)
+		products = append(products, product)
+	}
 
-    c.JSON(http.StatusCreated, product)
-}
-
-// Ambil semua produk
-func (p *ProductController) GetAllProducts(c *gin.Context) {
-    var products []models.Product
-    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-    defer cancel()
-
-    cursor, err := p.ProductCollection.Find(ctx, bson.M{})
-    if err != nil {
-        c.JSON(http.StatusInternalServerError, gin.H{"error": "Gagal mendapatkan produk"})
-        return
-    }
-
-    if err := cursor.All(ctx, &products); err != nil {
-        c.JSON(http.StatusInternalServerError, gin.H{"error": "Gagal memproses data produk"})
-        return
-    }
-
-    c.JSON(http.StatusOK, products)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(products)
 }
