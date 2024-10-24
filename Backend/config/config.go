@@ -7,6 +7,7 @@ import (
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	
 )
 
 var DB *mongo.Client
@@ -29,6 +30,7 @@ func ConnectDB() *mongo.Client {
 	DB = client
 	return client
 }
+
 
 func GetCollection(client *mongo.Client, collectionName string) *mongo.Collection {
 	return client.Database("jajankuy").Collection(collectionName)
