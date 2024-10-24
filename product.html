@@ -83,6 +83,7 @@
 </section>
 
 <script>
+  // Daftar produk berdasarkan kota
   const products = {
       Bandung: [
           { name: "Batagor", image: "img/batagor.png" },
@@ -95,12 +96,21 @@
           { name: "Nasi Uduk", image: "img/nasi uduk.png" }
       ],
       Yogyakarta: [
-          { name: "Gudeg", image: "img/makanan/gudeg.jpg" },
-          { name: "Bakpia", image: "img/makanan/bakpia.jpg" }
+          { name: "Gudeg", image: "img/gudeg.jpg" },
+          { name: "Bakpia", image: "img/bakpia.jpg" },
+          { name: "Wedang", image: "img/wedang.jpg"},
+          { name: "Getuk", image: "img/getuk.jpg"}
+      ],
+      Semarang: [
+          { name: "Lumpia", image: "img/lumpia.jpeg" },
+          { name: "Wingko", image: "img/wingko.jpg" },
+          { name: "Mie Kopyok", image: "img/kopyok.jpg"},
+          { name: "Babat Gongso", image: "img/babat.jpg"}
       ],
       // Tambahkan kota dan makanan lain di sini
   };
 
+  // Fungsi untuk menampilkan produk berdasarkan kota yang dipilih
   function displayProducts(city) {
       const productGrid = document.getElementById("product-grid");
 
@@ -125,17 +135,22 @@
               productGrid.appendChild(productItem);
           });
       } else {
-          productGrid.innerHTML = "";
+          productGrid.innerHTML = "<p>Maaf, tidak ada produk untuk kota yang dipilih.</p>";
       }
   }
 
-  // Simulasikan pemilihan kota dari halaman about
-  // Misalnya, ketika Bandung dipilih, panggil fungsi ini:
-  displayProducts("Bandung");
+  // Ambil kota yang dipilih dari localStorage
+  const selectedCity = localStorage.getItem('selectedCity');
 
-  // Di sini kamu bisa menambahkan logika untuk menangkap pemilihan kota
-  // Misal dari halaman lain atau dari dropdown selector.
+  // Jika ada kota yang dipilih, tampilkan produk dari kota tersebut
+  if (selectedCity) {
+      displayProducts(selectedCity);
+  } else {
+      // Jika tidak ada kota yang dipilih, tampilkan pesan atau kota default
+      document.getElementById("product-grid").innerHTML = "<p>Silakan pilih kota dari halaman sebelumnya.</p>";
+  }
 </script>
+
 
 <style>
         .product-grid {
