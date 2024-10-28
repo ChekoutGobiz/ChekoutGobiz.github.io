@@ -3,6 +3,7 @@ package controllers
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -47,7 +48,12 @@ func init() {
 }
 
 func GetProductsByRegion(w http.ResponseWriter, r *http.Request) {
-	regionName := r.URL.Query().Get("region") // Ambil nama region dari query
+	regionName := r.URL.Query().Get("name")
+	fmt.Println("Region parameter:", regionName)
+	if regionName == "" {
+		http.Error(w, "Region parameter is required", http.StatusBadRequest)
+		return
+	}
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
@@ -62,8 +68,9 @@ func GetProductsByRegion(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Cari Produk berdasarkan RegionID
+	productCollection := config.DB.Database("jajankuy").Collection("products")
 	var products []models.Product
-	cursor, err := productCollection.Find(ctx, bson.M{"region_id": region.ID}) // Ganti region_id dengan region.ID yang ditemukan
+	cursor, err := productCollection.Find(ctx, bson.M{"region_id": region.ID}) // menggunakan region.ID
 	if err != nil {
 		http.Error(w, "Failed to retrieve products", http.StatusInternalServerError)
 		return
@@ -79,9 +86,9 @@ func GetProductsByRegion(w http.ResponseWriter, r *http.Request) {
 		products = append(products, product)
 	}
 
-	// Kirimkan hasil produk dalam format JSON
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(products) // Kirim produk
+	if err := json.NewEncoder(w).Encode(products); err != nil {
+		http.Error(w, "Failed to encode products to JSON", http.StatusInternalServerError)
+	}
 }
 
 // CreateProduct handles the creation of a new product
