@@ -22,6 +22,11 @@
 </head>
 
 <style>
+
+  header {
+    background-color: #24282c; /* Warna latar belakang */
+  }
+  
   .icon-item {
     position: relative;
     display: inline-block;
@@ -47,8 +52,64 @@
     line-height: 1;
     box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Efek bayangan */
   }
-</style>
 
+    footer {
+      background-color: #24282c;
+      color: #fff;
+      padding: 40px 0;
+    }
+  
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .footer-contact, .footer-social {
+      width: 45%;
+    }
+  
+    .footer-contact h3, .footer-social h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: black;
+    }
+  
+    .contact-info, .social-icons {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .contact-info li, .social-icons li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+  
+    .contact-info li i, .social-icons li i {
+      color: black;
+      margin-right: 8px;
+    }
+  
+    .social-icons li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+  
+    .social-icons li a:hover {
+      color: black;
+    }
+  
+    .footer-bottom {
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+  
 <body>
  <!-- Header -->
  <header>
@@ -1291,7 +1352,31 @@
     ©2020 KuyJajan
   </div>
   <!-- Copyright -->
-</footer>
+  <footer id="footer">
+    <div class="footer-container">
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <ul class="contact-info">
+          <li><i class="ri-map-pin-2-fill"></i> Jl. Merdeka No.123, Bandung, Indonesia</li>
+          <li><i class="ri-mail-fill"></i> info@kuyjajan.com</li>
+          <li><i class="ri-phone-fill"></i> +62 856-2448-2521</li>
+        </ul>
+      </div>
+      
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <ul class="social-icons">
+          <li><a href="#"><i class="ri-facebook-circle-fill"></i> Facebook</a></li>
+          <li><a href="#"><i class="ri-instagram-fill"></i> Instagram</a></li>
+          <li><a href="#"><i class="ri-twitter-fill"></i> Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 KuyJajan. All rights reserved.</p>
+    </div>
+  </footer>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
