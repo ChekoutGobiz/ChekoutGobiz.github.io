@@ -47,6 +47,7 @@ func init() {
 	productCollection = client.Database("jajankuy").Collection("products")
 }
 
+// GetProductsByRegion menampilkan produk berdasarkan wilayah
 func GetProductsByRegion(w http.ResponseWriter, r *http.Request) {
 	regionName := r.URL.Query().Get("name")
 	fmt.Println("Region parameter:", regionName)
@@ -68,9 +69,8 @@ func GetProductsByRegion(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Cari Produk berdasarkan RegionID
-	productCollection := config.DB.Database("jajankuy").Collection("products")
 	var products []models.Product
-	cursor, err := productCollection.Find(ctx, bson.M{"region_id": region.ID}) // menggunakan region.ID
+	cursor, err := productCollection.Find(ctx, bson.M{"region_id": region.ID})
 	if err != nil {
 		http.Error(w, "Failed to retrieve products", http.StatusInternalServerError)
 		return
@@ -86,12 +86,13 @@ func GetProductsByRegion(w http.ResponseWriter, r *http.Request) {
 		products = append(products, product)
 	}
 
+	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(products); err != nil {
 		http.Error(w, "Failed to encode products to JSON", http.StatusInternalServerError)
 	}
 }
 
-// CreateProduct handles the creation of a new product
+// CreateProduct menambah produk baru ke dalam database
 func CreateProduct(w http.ResponseWriter, r *http.Request) {
 	var product models.Product
 	if err := json.NewDecoder(r.Body).Decode(&product); err != nil {
@@ -99,24 +100,23 @@ func CreateProduct(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Generate new ObjectID for product
+	// Generate ObjectID baru untuk produk
 	product.ID = primitive.NewObjectID()
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	// Insert product into the database
+	// Masukkan produk ke dalam database
 	_, err := productCollection.InsertOne(ctx, product)
 	if err != nil {
 		http.Error(w, "Failed to insert product", http.StatusInternalServerError)
 		return
 	}
 
-	// Set response header and encode product to JSON
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(product)
 }
 
-// GetProducts retrieves all products from the database
+// GetProducts menampilkan semua produk dari database
 func GetProducts(w http.ResponseWriter, r *http.Request) {
 	var products []models.Product
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
