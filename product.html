@@ -15,7 +15,60 @@
 </head>
 
 <style>
-  /* CSS tambahan disini */
+  footer {
+    background-color: #24282c;
+    color: #fff;
+    padding: 40px 0;
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px; /* Menambah jarak antara .footer-contact dan .footer-social */
+    padding: 20px;
+  }
+  
+  .footer-contact, .footer-social {
+    width: 45%;
+  }
+
+  .footer-contact h3, .footer-social h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: black;
+  }
+
+  .contact-info, .social-icons {
+    list-style: none;
+    padding: 0;
+  }
+
+  .contact-info li, .social-icons li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+
+  .contact-info li i, .social-icons li i {
+    color: black;
+    margin-right: 8px;
+  }
+
+  .social-icons li a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .social-icons li a:hover {
+    color: black;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
 </style>
 
 <body>
