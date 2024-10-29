@@ -27,6 +27,23 @@
     background-color: #24282c; /* Warna latar belakang */
   }
   
+/* Untuk mengubah background navigation bar */
+.navbar {
+  background-color: none; /* Warna latar belakang yang lebih gelap */
+}
+
+/* Untuk mengubah warna teks menjadi putih */
+.navbar a {
+  color: white; /* Ubah warna teks menjadi putih */
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+/* Menambahkan warna khusus untuk item yang sedang aktif */
+.navbar a.active {
+  color: white; /* Warna merah untuk item aktif */
+}
+
   .icon-item {
     position: relative;
     display: inline-block;
@@ -56,7 +73,7 @@
     footer {
       background-color: #24282c;
       color: #fff;
-      padding: 40px 0;
+      padding: 40px;
     }
   
     .footer-container {
@@ -115,8 +132,8 @@
  <header>
    <a href="index.html" class="logo"><img src="img/logo kuyjajan.jpg" alt="KuyJajan Logo"></a>
    <ul class="navbar">
-     <li><a href="index.html">Home</a></li>
-     <li><a href="about.html">About</a></li>
+     <li><a href="index.html" class="active">Home</a></li>
+     <li><a href="about.html" class="active">About</a></li>
      <li><a href="product.html" class="active">Product</a></li>
    </ul>    
    <div class="icons">
