@@ -4,130 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KuyJajan - Product Slider</title>
-  
 
- <!-- Swiper CSS -->
- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
- <link rel="stylesheet" href="css/style.css">
- <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
- <link
-        rel="stylesheet"
-        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet"/>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 </head>
 
 <style>
+  /* CSS tambahan disini */
+</style>
 
-  header {
-    background-color: #24282c; /* Warna latar belakang */
-  }
-  
-/* Untuk mengubah background navigation bar */
-.navbar {
-  background-color: none; /* Warna latar belakang yang lebih gelap */
-}
-
-/* Untuk mengubah warna teks menjadi putih */
-.navbar a {
-  color: white; /* Ubah warna teks menjadi putih */
-  text-decoration: none;
-  padding: 10px 15px;
-}
-
-/* Menambahkan warna khusus untuk item yang sedang aktif */
-.navbar a.active {
-  color: white; /* Warna merah untuk item aktif */
-}
-
-  .icon-item {
-    position: relative;
-    display: inline-block;
-  }
-
-  .ri-shopping-cart-line {
-    font-size: 32px; /* Sesuaikan ukuran ikon agar lebih terlihat */
-    color: #990583; /* Warna ikon */
-  }
-
-  .cart-count {
-    position: absolute;
-    top: -10px; /* Posisikan lebih ke atas */
-    right: -10px; /* Posisikan lebih ke kanan */
-    background-color: #00ff48; /* Warna biru */
-    color: white;
-    font-size: 10px; /* Ukuran teks */
-    border-radius: 15px; /* Bentuk bulat */
-    padding: 2px 6px; /* Spasi dalam */
-    min-width: 20px;
-    text-align: center;
-    font-weight: bold;
-    line-height: 1;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Efek bayangan */
-  }
-
-    footer {
-      background-color: #24282c;
-      color: #fff;
-      padding: 40px;
-    }
-  
-    .footer-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-  
-    .footer-contact, .footer-social {
-      width: 45%;
-    }
-  
-    .footer-contact h3, .footer-social h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: black;
-    }
-  
-    .contact-info, .social-icons {
-      list-style: none;
-      padding: 0;
-    }
-  
-    .contact-info li, .social-icons li {
-      margin-bottom: 10px;
-      font-size: 1rem;
-    }
-  
-    .contact-info li i, .social-icons li i {
-      color: black;
-      margin-right: 8px;
-    }
-  
-    .social-icons li a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-  
-    .social-icons li a:hover {
-      color: black;
-    }
-  
-    .footer-bottom {
-      text-align: center;
-      padding: 15px 0;
-      margin-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-  </style>
-  
 <body>
+
  <!-- Header -->
  <header>
    <a href="index.html" class="logo"><img src="img/logo kuyjajan.jpg" alt="KuyJajan Logo"></a>
@@ -137,1144 +29,131 @@
      <li><a href="product.html" class="active">Product</a></li>
    </ul>    
    <div class="icons">
-     
      <div class="bx bx-menu" id="menu-icon"></div>
-
      <div class="icons-item">
       <div class="icon-item" style="position: relative">
         <a href="cart.html"><i class="ri-shopping-cart-line"></i></a>
-        <span class="cart-count">0</span> <!-- Tambahkan elemen ini -->
+        <span class="cart-count">0</span>
       </div>
     </div>
-    
    </div>
-  
  </header>
 
+ <!-- Filter Dropdown -->
+ <section class="filter-section">
+  <div class="container">
+      <label for="cityFilter">Filter Berdasarkan Kota:</label>
+      <select id="cityFilter">
+          <option value="all">Semua Kota</option>
+          <option value="Bandung">Bandung</option>
+          <option value="Jakarta">Jakarta</option>
+          <option value="Yogyakarta">Yogyakarta</option>
+          <option value="Semarang">Semarang</option>
+          <option value="Surabaya">Surabaya</option>
+          <option value="Malang">Malang</option>
+          <option value="Bali">Bali</option>
+          <option value="Padang">Padang</option>
+          <option value="Medan">Medan</option>
+      </select>
+  </div>
+</section>
+
+ <!-- Product Grid Section -->
  <section class="product-section">
   <div class="container">
-      <h2>List tersedia</h2>
+      <h2>Produk Tersedia</h2>
       <div id="product-grid" class="product-grid">
-          <!-- Produk makanan akan ditampilkan di sini -->
+          <!-- Product Card Contoh -->
+          <div class="product-card" data-city="Bandung">
+            <span class="label sale">Sale</span>
+            <img src="img/batagor.png" alt="Batagor">
+            <h3>Batagor</h3>
+            <p>Bakso tahu goreng khas Bandung.</p>
+            <div class="price">
+              <span class="discount-price">Rp.25.000</span>
+              <span class="original-price">Rp.50.000</span>
+            </div>
+            <button class="add-to-cart" data-id="1" data-name="Batagor" data-price="25000">+ Add</button>
+          </div>
+          <!-- Card lainnya di sini -->
       </div>
   </div>
 </section>
 
-<script>
-  // Daftar produk berdasarkan kota
-  const products = {
-      Bandung: [
-          { name: "Batagor", image: "img/batagor.png" },
-          { name: "Seblak", image: "img/seblak.jpg" },
-          { name: "Basreng", image: "img/basreng.jpeg" },
-          { name: "Mie Kocok", image: "img/miekocok.jpg" }
-      ],
-      Jakarta: [
-          { name: "Kerak Telor", image: "img/keraktelor.jpg" },
-          { name: "Ketoprak", image: "img/ketoprak.jpg" },
-          { name: "Nasi Uduk", image: "img/nasi uduk.png" },
-          { name: "Soto Betawi", image: "img/sotobetawi.jpg" }
-      ],
-      Yogyakarta: [
-          { name: "Gudeg", image: "img/gudeg.jpg" },
-          { name: "Bakpia", image: "img/bakpia.jpg" },
-          { name: "Wedang", image: "img/wedang.jpg"},
-          { name: "Getuk", image: "img/getuk.jpg"}
-      ],
-      Semarang: [
-          { name: "Lumpia", image: "img/lumpia.jpeg" },
-          { name: "Wingko", image: "img/wingko.jpg" },
-          { name: "Mie Kopyok", image: "img/kopyok.jpg"},
-          { name: "Babat Gongso", image: "img/babat.jpg"}
-      ],
-      Surabaya: [
-          { name: "Rawon", image: "img/rawon.jpg" },
-          { name: "Rujak Cingur", image: "img/rujak.jpg" },
-          { name: "Sate Klopo", image: "img/sate.jpg"},
-          { name: "Lontong Balap", image: "img/lontong.jpg"}
-      ],
-      Malang: [
-          { name: "Bakso Malang", image: "img/bakso.png" },
-          { name: "Putu", image: "img/putu.jpg" },
-          { name: "Orem-Orem", image: "img/orem.jpg"},
-          { name: "Cwie Mie", image: "img/cwie.jpg"}
-      ],
-      Bali: [
-          { name: "Lawar", image: "img/lawar.jpg" },
-          { name: "Ayam Betutu", image: "img/ayambetutu.webp" },
-          { name: "Jaja", image: "img/jaja.jpg"},
-          { name: "Nasi Campur", image: "img/nasicampur.jpg"}
-      ],
-      Padang: [
-          { name: "Rendang", image: "img/rendang.jpg" },
-          { name: "Gulai", image: "img/gulai.jpg" },
-          { name: "Keripik Balado", image: "img/keripik.jpg"},
-          { name: "Pisang Salai", image: "img/salai.jpg"}
-      ],
-      Medan: [
-          { name: "Soto Medan", image: "img/sotomedan.jpeg" },
-          { name: "Bika Ambon", image: "img/bika.jpg" },
-          { name: "Nasi Kentut", image: "img/nasikentut.jpg"},
-          { name: "Martabak Piring", image: "img/martabak.jpg"}
-      ],
-      // Tambahkan kota dan makanan lain di sini
-  };
-
-  // Fungsi untuk menampilkan produk berdasarkan kota yang dipilih
-  function displayProducts(city) {
-      const productGrid = document.getElementById("product-grid");
-
-      // Bersihkan produk yang sudah ada sebelumnya
-      productGrid.innerHTML = "";
-
-      // Periksa apakah ada produk untuk kota yang dipilih
-      if (products[city]) {
-          products[city].forEach((product) => {
-              const productItem = document.createElement("div");
-              productItem.classList.add("product-item");
-
-              // Template produk yang akan ditampilkan
-              productItem.innerHTML = `
-                  <img src="${product.image}" alt="${product.name}" class="product-img" />
-                  <div class="product-info">
-                      <h3>${product.name}</h3>
-                  </div>
-              `;
-
-              // Tambahkan produk ke grid
-              productGrid.appendChild(productItem);
-          });
-      } else {
-          productGrid.innerHTML = "<p>Maaf, tidak ada produk untuk kota yang dipilih.</p>";
-      }
-  }
-
-  // Ambil kota yang dipilih dari localStorage
-  const selectedCity = localStorage.getItem('selectedCity');
-
-  // Jika ada kota yang dipilih, tampilkan produk dari kota tersebut
-  if (selectedCity) {
-      displayProducts(selectedCity);
-  } else {
-      // Jika tidak ada kota yang dipilih, tampilkan pesan atau kota default
-      document.getElementById("product-grid").innerHTML = "<p>Silakan pilih kota dari halaman sebelumnya.</p>";
-  }
-</script>
-
-
-<style>
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .product-item {
-            text-align: center;
-        }
-
-        .product-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .product-item p {
-            margin-top: 10px;
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-    </style>
-
-
-  <!-- Product Slider Section -->
-  <section class="popular-products">
-    <h2>Makanan</h2>
-    <div class="product-grid">
-
-      <!-- BANDUNG -->
-      <!-- Seblak -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/seblak.jpg" alt="Seblak">
-        <h3>Seblak</h3>
-        <p>Seblak adalah masakan khas Sunda yang berasal dari wilayah Parahyangan dengan cita rasa yang pedas, seblak sangat diminati oleh  gen Z.</p>
-        <div class="price">
-          <span class="discount-price">Rp.30.000</span>
-          <span class="original-price">Rp.45.000</span>
-        </div>
-        <button class="add-to-cart" data-id="1" data-name="Seblak" data-price="30000">+ Add</button>
-      </div>
-
-  <!-- Basreng -->
-  <div class="product-card">
-    <span class="label sale">Sale</span>
-    <img src="img/basreng.jpeg" alt="Basreng">
-    <h3>Basreng</h3>
-    <p>Basreng (baso goreng) adalah camilan khas Sunda yang terbuat dari bakso yang diiris tipis dan digoreng hingga renyah.</p>
-    <div class="price">
-      <span class="discount-price">Rp.25.000</span>
-      <span class="original-price">Rp.50.000</span>
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <ul class="contact-info">
+        <li><i class="ri-map-pin-2-fill"></i> Jl. Merdeka No.123, Bandung, Indonesia</li>
+        <li><i class="ri-mail-fill"></i> info@kuyjajan.com</li>
+        <li><i class="ri-phone-fill"></i> +62 856-2448-2521</li>
+      </ul>
     </div>
-    <button class="add-to-cart" data-id="2" data-name="Basreng" data-price="25000">+ Add</button>
-  </div>
-
-      <!-- Batagor -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/batagor.png" alt="Batagor">
-        <h3>Batagor</h3>
-        <p>Batagor (bakso tahu goreng) adalah jajanan khas Bandung yang disajikan dengan saus kacang dan kecap.</p>
-        <div class="price">
-          <span class="discount-price">Rp.25.000</span>
-          <span class="original-price">Rp.50.000</span>
-        </div>
-        <button class="add-to-cart" data-id="3" data-name="Batagor" data-price="25000">+ Add</button>
-      </div>
-
-      <!-- Tahu Susu -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/tahususu.jpg" alt="TahuSusu">
-        <h3>Tahu Susu</h3>
-        <p>Tahu ini memiliki ciri khas tekstur yang lembut dan rasa yang gurih karena campuran susu dalam adonannya. </p>
-        <div class="price">
-          <span class="discount-price">Rp.30.000</span>
-          <span class="original-price">Rp.40.000</span>
-        </div>
-        <button class="add-to-cart" data-id="4" data-name="TahuSusu" data-price="30000">+ Add</button>
-      </div>
-       <!-- BANDUNG -->
-
-
-        <!-- JAKARTA -->
-        <!-- Kerak Telor-->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/keraktelor.jpg" alt="Kerak Telor">
-        <h3>Kerak Telor</h3>
-        <p>Kerak telor adalah makanan khas Betawi yang terbuat dari beras ketan putih, telur, ebi, kelapa sangrai, dan bumbu-bumbu lainnya.</p>
-        <div class="price">
-          <span class="discount-price">Rp.20.000</span>
-          <span class="original-price">Rp.40.000</span>
-        </div>
-        <button class="add-to-cart" data-id="5" data-name="Kerak Telor" data-price="30000">+ Add</button>
-      </div>
-
-        <!-- Soto Betawi-->
-        <div class="product-card">
-          <span class="label sale">Sale</span>
-          <img src="img/sotobetawi.jpg" alt="Soto Betawi">
-          <h3>Soto Betawi</h3>
-          <p> Isian soto ini biasanya berupa daging sapi, jeroan (seperti babat atau paru), kentang, tomat, dan emping. </p>
-          <div class="price">
-            <span class="discount-price">Rp.30.000</span>
-            <span class="original-price">Rp.40.000</span>
-          </div>
-          <button class="add-to-cart" data-id="6" data-name="Soto Betawi" data-price="30000">+ Add</button>
-        </div>
-
-         <!-- Nasi Uduk -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/nasi uduk.png" alt="Nasi Uduk">
-        <h3>Nasi Uduk</h3>
-        <p>Nasi yang dimasak dengan santan dan rempah-rempah. Nasi uduk yang pulen dan lembut berpadu sempurna dengan gurihnya santan.</p>
-        <div class="price">
-          <span class="discount-price">Rp.25.000</span>
-          <span class="original-price">Rp.50.000</span>
-        </div>
-        <button class="add-to-cart" data-id="7" data-name="Nasi Uduk" data-price="25000">+ Add</button>
-      </div>
-
-       <!-- Ketoprak -->
-       <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/ketoprak.jpg" alt="Ketoprak">
-        <h3>Ketoprak</h3>
-        <p>Ketoprak merupakan makanan jalanan populer di Jakarta yang terdiri dari lontong, bihun, tahu goreng, tauge, dan telur, yang disiram dengan saus kacang dan kecap manis. </p>
-        <div class="price">
-          <span class="discount-price">Rp.25.000</span>
-          <span class="original-price">Rp.30.000</span>
-        </div>
-        <button class="add-to-cart" data-id="8" data-name="Ketoprak" data-price="25000">+ Add</button>
-      </div>
-        <!-- JAKARTA -->
-
-
-         <!-- YOGYAKARTA -->
-          <!-- Gudeg -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/gudeg.jpg" alt="Gudeg">
-        <h3>Gudeg</h3>
-        <p>Rasanya cenderung manis, dan biasanya disajikan dengan nasi, ayam opor, telur, tempe, dan sambal krecek (kulit sapi pedas).</p>
-        <div class="price">
-          <span class="discount-price">Rp.40.000</span>
-          <span class="original-price">Rp.50.000</span>
-        </div>
-        <button class="add-to-cart" data-id="9" data-name="Gudeg" data-price="40000">+ Add</button>
-      </div>
-
-        <!-- Bakpia -->
-        <div class="product-card">
-          <span class="label sale">Sale</span>
-          <img src="img/bakpia.jpg" alt="Bakpia">
-          <h3>Bakpia</h3>
-          <p>Bakpia adalah kue khas Yogyakarta yang terbuat dari kulit tepung dengan berbagai isian, seperti kacang hijau, cokelat, keju, dan durian.</p>
-          <div class="price">
-            <span class="discount-price">Rp.30.000</span>
-            <span class="original-price">Rp.40.000</span>
-          </div>
-          <button class="add-to-cart" data-id="10" data-name="Bakpia" data-price="30000">+ Add</button>
-        </div>
-
-          <!-- Wedang -->
-          <div class="product-card">
-            <span class="label sale">Sale</span>
-            <img src="img/wedang.jpg" alt="Wedang">
-            <h3>Wedang</h3>
-            <p> Wedang ronde adalah minuman hangat yang berisi bola-bola tepung ketan dengan isian kacang, yang disajikan dalam kuah jahe manis.</p>
-            <div class="price">
-              <span class="discount-price">Rp.20.000</span>
-              <span class="original-price">Rp.30.000</span>
-            </div>
-            <button class="add-to-cart" data-id="11" data-name="Wedang" data-price="20000">+ Add</button>
-          </div>
-
-           <!-- Getuk -->
-           <div class="product-card">
-            <span class="label sale">Sale</span>
-            <img src="img/getuk.jpg" alt="Getuk">
-            <h3>Getuk</h3>
-            <p> Getuk adalah kue tradisional yang terbuat dari singkong yang dihaluskan, dicampur dengan gula, dan dibentuk menjadi berbagai warna.</p>
-            <div class="price">
-              <span class="discount-price">Rp.20.000</span>
-              <span class="original-price">Rp.30.000</span>
-            </div>
-            <button class="add-to-cart" data-id="12" data-name="Getuk data-price="20000">+ Add</button>
-          </div>
-          <!-- YOGYAKARTA -->
-
-          <!-- SEMARANG -->
-      <!-- Lumpia -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/lumpia.jpeg" alt="Lumpia">
-        <h3>Lumpia</h3>
-        <p>Lumpia Semarang adalah perpaduan rasa antara Tionghoa dan Indonesia, pertama kali dibuat di Semarang, Jawa Tengah.</p>
-        <div class="price">
-          <span class="discount-price">Rp.30.000</span>
-          <span class="original-price">Rp.50.000</span>
-        </div>
-        <button class="add-to-cart" data-id="13" data-name="Lumpia" data-price="30000">+ Add</button>
-      </div>
-
-      <!-- Wingko -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/wingko.jpg" alt="Wingko">
-        <h3>Wingko</h3>
-        <p>Wingko babat adalah kue tradisional khas Semarang yang terbuat dari tepung ketan dan kelapa parut.</p>
-        <div class="price">
-          <span class="discount-price">Rp.20.000</span>
-          <span class="original-price">Rp.30.000</span>
-        </div>
-        <button class="add-to-cart" data-id="14" data-name="Wingko" data-price="20000">+ Add</button>
-      </div>
-
-      <!-- Mie Kopyok -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/kopyok.jpg" alt="Mie Kopyok">
-        <h3>Mie Kopyok</h3>
-        <p>Mie kopyok adalah hidangan mie tradisional khas Semarang yang disajikan dengan tauge, potongan lontong, tahu pong, kerupuk gendar, dan bawang goreng.</p>
-        <div class="price">
-          <span class="discount-price">Rp.30.000</span>
-          <span class="original-price">Rp.40.000</span>
-        </div>
-        <button class="add-to-cart" data-id="15" data-name="Mie Kopyok" data-price="30000">+ Add</button>
-      </div>
-
-      <!-- Babat Gongso -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/babat.jpg" alt="Babat Gongso">
-        <h3>Babat Gongso</h3>
-        <p>Babat (bagian lambung sapi) yang dimasak dengan bumbu kecap manis, bawang merah, bawang putih, cabai, dan rempah-rempah lainnya.</p>
-        <div class="price">
-          <span class="discount-price">Rp.30.000</span>
-          <span class="original-price">Rp.40.000</span>
-        </div>
-        <button class="add-to-cart" data-id="16" data-name="Babat Gongso" data-price="30000">+ Add</button>
-      </div>
-          <!-- SEMARANG -->
-
-          <!-- SURABAYA -->
-         <!-- Rawon -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/rawon.jpg" alt="Rawon">
-        <h3>Rawon</h3>
-        <p>Rawon adalah salah satu makanan ikonik dari Surabaya yang berupa sup daging dengan kuah hitam khas yang berasal dari kluwak, buah yang memberikan rasa dan warna unik. </p>
-        <div class="price">
-          <span class="discount-price">Rp.30.000</span>
-          <span class="original-price">Rp.40.000</span>
-        </div>
-        <button class="add-to-cart" data-id="17" data-name="Rawon" data-price="30000">+ Add</button>
-      </div>
-
-        <!-- Rujak Cingur -->
-        <div class="product-card">
-          <span class="label sale">Sale</span>
-          <img src="img/rujak.jpg" alt="Rujak Cingur">
-          <h3>Rujak Cingur</h3>
-          <p> Rujak cingur adalah salah satu makanan khas Surabaya yang unik karena menggunakan cingur (hidung sapi) sebagai bahan utama. </p>
-          <div class="price">
-            <span class="discount-price">Rp.20.000</span>
-            <span class="original-price">Rp.30.000</span>
-          </div>
-          <button class="add-to-cart" data-id="18" data-name="Rujak Cingur" data-price="20000">+ Add</button>
-        </div>
-
-         <!-- Sate Klopo -->
-         <div class="product-card">
-          <span class="label sale">Sale</span>
-          <img src="img/sate.jpg" alt="Sate Klopo">
-          <h3>Sate Klopo</h3>
-          <p>Sate klopo adalah sate khas Surabaya yang menggunakan daging sapi atau ayam yang dicampur dengan parutan kelapa sebelum dibakar.</p>
-          <div class="price">
-            <span class="discount-price">Rp.30.000</span>
-            <span class="original-price">Rp.35.000</span>
-          </div>
-          <button class="add-to-cart" data-id="19" data-name="Sate Klopo" data-price="30000">+ Add</button>
-        </div>
-
-          <!-- Lontong Balap -->
-          <div class="product-card">
-            <span class="label sale">Sale</span>
-            <img src="img/lontong.jpg" alt="Lontong Balap">
-            <h3>Lontong Balap</h3>
-            <p>Lontong balap adalah makanan khas yang terdiri dari lontong, tauge, tahu goreng, lento (perkedel dari kacang tolo), dan kuah gurih yang ringan.</p>
-            <div class="price">
-              <span class="discount-price">Rp.30.000</span>
-              <span class="original-price">Rp.40.000</span>
-            </div>
-            <button class="add-to-cart" data-id="20" data-name="Lontong Balap" data-price="30000">+ Add</button>
-          </div>
-           <!-- SURABAYA -->
-
-
-          <!-- MALANG -->
-           <!-- Bakso Malang -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/Bakso Malang .jpeg" alt="Bakso Malang">
-        <h3>Bakso Malang</h3>
-        <p>Bakso Malang adalah hidangan bakso yang banyak ditemui di seluruh belahan Kota Malang dan Kabupaten Malang, Jawa Timur.</p>
-        <div class="price">
-          <span class="discount-price">Rp.50.000</span>
-          <span class="original-price">Rp.70.000</span>
-        </div>
-        <button class="add-to-cart" data-id="21" data-name="Bakso Malang" data-price="50000">+ Add</button>
-      </div>
-
-       <!-- Putu -->
-       <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/putu.jpg" alt="Putu">
-        <h3>Putu</h3>
-        <p>Kue yang terbuat dari tepung terigu, gula, dan santan, kemudian dipanggang hingga matang.</p>
-        <div class="price">
-          <span class="discount-price">Rp.20.000</span>
-          <span class="original-price">Rp.30.000</span>
-        </div>
-        <button class="add-to-cart" data-id="22" data-name="Bakso Malang" data-price="20000">+ Add</button>
-      </div>
-
-      <!-- Orem orem -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/orem.jpg" alt="Orem">
-        <h3>Orem-orem</h3>
-        <p>Makanan berkuah yang terbuat dari tepung terigu, santan, dan sayuran, sering disajikan dengan lauk seperti ayam atau telur.</p>
-        <div class="price">
-          <span class="discount-price">Rp.20.000</span>
-          <span class="original-price">Rp.30.000</span>
-        </div>
-        <button class="add-to-cart" data-id="23" data-name="Orem" data-price="20000">+ Add</button>
-      </div>
-
-      <!--Cwie Mie -->
-      <div class="product-card">
-        <span class="label sale">Sale</span>
-        <img src="img/cwie.jpg" alt="CwieMie">
-        <h3>Cwie Mie</h3>
-        <p>Mie yang disajikan dengan saus kacang, sayuran, dan lauk seperti ayam atau telur.</p>
-        <div class="price">
-          <span class="discount-price">Rp.30.000</span>
-          <span class="original-price">Rp.40.000</span>
-        </div>
-        <button class="add-to-cart" data-id="24" data-name="CwieMie" data-price="30000">+ Add</button>
-      </div>
-          <!-- MALANG -->
-
-        <!-- BALI -->
-         <!-- Lawar -->
-    <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/lawar.jpg" alt="Lawar">
-      <h3>Lawar</h3>
-      <p>Campuran sayuran, daging cincang, dan bumbu rempah, sering disajikan sebagai pelengkap nasi.</p>
-      <div class="price">
-        <span class="discount-price">Rp.40.000</span>
-        <span class="original-price">Rp.55.000</span>
-      </div>
-      <button class="add-to-cart" data-id="25" data-name="Lawar" data-price="40000">+ Add</button>
+    <div class="footer-social">
+      <h3>Follow Us</h3>
+      <ul class="social-icons">
+        <li><a href="#"><i class="ri-facebook-circle-fill"></i> Facebook</a></li>
+        <li><a href="#"><i class="ri-instagram-fill"></i> Instagram</a></li>
+        <li><a href="#"><i class="ri-twitter-fill"></i> Twitter</a></li>
+      </ul>
     </div>
-
-    <!-- Ayam Betutu -->
-    <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/ayambetutu.webp" alt="AyamBetutu">
-      <h3>Ayam Betutu</h3>
-      <p>Hidangan ayam yang dimasak dengan bumbu khas Bali seperti bawang merah, bawang putih, kunyit, jahe.</p>
-      <div class="price">
-        <span class="discount-price">Rp.35.000</span>
-        <span class="original-price">Rp.45.000</span>
-      </div>
-      <button class="add-to-cart" data-id="26" data-name="AyamBetutu" data-price="35000">+ Add</button>
-    </div>
-
-    <!-- Jaja -->
-    <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/jaja.jpg" alt="Jaja">
-      <h3>Jaja</h3>
-      <p>Kue tradisional Bali yang terbuat dari tepung ketan, biasanya berwarna-warni dan disajikan dalam berbagai bentuk.</p>
-      <div class="price">
-        <span class="discount-price">Rp.35.000</span>
-        <span class="original-price">Rp.45.000</span>
-      </div>
-      <button class="add-to-cart" data-id="27" data-name="Jaja" data-price="35000">+ Add</button>
-    </div>
-
-     <!-- Nasi Campur -->
-     <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/nasicampur.jpg" alt="Nasi Campur">
-      <h3>Nasi Campur</h3>
-      <p>Nasi yang disajikan dengan berbagai lauk seperti ayam, sate, telur, dan sayuran, biasanya dilengkapi dengan sambal.</p>
-      <div class="price">
-        <span class="discount-price">Rp.30.000</span>
-        <span class="original-price">Rp.45.000</span>
-      </div>
-      <button class="add-to-cart" data-id="28" data-name="Nasi Campur" data-price="30000">+ Add</button>
-    </div>
-         <!-- BALI -->
-
-
-         <!-- PADANG -->
-      <!-- Rendang -->
-    <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/rendang.jpg" alt="Rendang">
-      <h3>Rendang</h3>
-      <p>Daging sapi yang dimasak dengan santan dan rempah-rempah khas, hingga empuk dan berwarna cokelat gelap.</p>
-      <div class="price">
-        <span class="discount-price">Rp.45.000</span>
-        <span class="original-price">Rp.50.000</span>
-      </div>
-      <button class="add-to-cart" data-id="29" data-name="Rendang" data-price="45000">+ Add</button>
-    </div>
-
-     <!-- Gulai -->
-     <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/gulai.jpg" alt="Gulai">
-      <h3>Gulai</h3>
-      <p>Hidangan berkuah yang terbuat dari daging, ikan, atau sayuran yang dimasak dengan santan dan bumbu rempah.</p>
-      <div class="price">
-        <span class="discount-price">Rp.45.000</span>
-        <span class="original-price">Rp.50.000</span>
-      </div>
-      <button class="add-to-cart" data-id="30" data-name="Gulai" data-price="45000">+ Add</button>
-    </div>
-
-    <!-- Keripik Balado -->
-    <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/keripik.jpg" alt="Keripik">
-      <h3>Keripik Balado</h3>
-      <p>Keripik yang terbuat dari singkong atau kentang, dilapisi dengan sambal balado pedas.</p>
-      <div class="price">
-        <span class="discount-price">Rp.35.000</span>
-        <span class="original-price">Rp.40.000</span>
-      </div>
-      <button class="add-to-cart" data-id="31" data-name="Keripik" data-price="35000">+ Add</button>
-    </div>
-
-    <!-- Pisang Salai -->
-    <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/salai.jpg" alt="Salai">
-      <h3>Pisang Salai</h3>
-      <p>Pisang yang diasap dan disajikan dengan gula merah atau sambal.</p>
-      <div class="price">
-        <span class="discount-price">Rp.35.000</span>
-        <span class="original-price">Rp.40.000</span>
-      </div>
-      <button class="add-to-cart" data-id="32" data-name="Salai" data-price="35000">+ Add</button>
-    </div>
-      <!-- PADANG -->
-
-
-      <!-- MEDAN -->
-    <!-- Soto Medan -->
-    <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/sotomedan.jpeg" alt="SotoMedan">
-      <h3>Soto Medan</h3>
-      <p>Soto Medan memiliki kuah yang kental dan kaya dengan santan. Disajikan dengan daging ayam atau sapi.</p>
-      <div class="price">
-        <span class="discount-price">Rp.20.000</span>
-        <span class="original-price">Rp.30.000</span>
-      </div>
-      <button class="add-to-cart" data-id="33" data-name="SotoMedan" data-price="20000">+ Add</button>
-    </div>
-
-    <!-- Bika Ambon -->
-    <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/bika.jpg" alt="Bika">
-      <h3>Bika Ambon</h3>
-      <p>Kue tradisional yang terbuat dari tepung ketan, santan, dan ragi, memiliki tekstur yang kenyal dan berongga.</p>
-      <div class="price">
-        <span class="discount-price">Rp.30.000</span>
-        <span class="original-price">Rp.40.000</span>
-      </div>
-      <button class="add-to-cart" data-id="34" data-name="Bika" data-price="30000">+ Add</button>
-    </div>
-
-    <!-- Nasi Kentut -->
-    <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/nasikentut.jpg" alt="NasiKentut">
-      <h3>Nasi Kentut</h3>
-      <p>Nasi kentut adalah makanan khas Medan yang terbuat dari nasi yang dibungkus daun kentut dan disajikan dengan berbagai lauk pauk</p>
-      <div class="price">
-        <span class="discount-price">Rp.20.000</span>
-        <span class="original-price">Rp.40.000</span>
-      </div>
-      <button class="add-to-cart" data-id="35" data-name="Nasi Kentut" data-price="20000">+ Add</button>
-    </div>
-
-    <!-- Martabak Piring -->
-    <div class="product-card">
-      <span class="label sale">Sale</span>
-      <img src="img/martabak.jpg" alt="Martabak">
-      <h3>Martabak Piring</h3>
-      <p>Martabak piring adalah varian martabak manis yang dimasak menggunakan piring logam kecil.</p>
-      <div class="price">
-        <span class="discount-price">Rp.40.000</span>
-        <span class="original-price">Rp.50.000</span>
-      </div>
-      <button class="add-to-cart" data-id="36" data-name="Martabak" data-price="40000">+ Add</button>
-    </div>
-       <!-- MEDAN -->
-  </section>
-
-        <!-- Add more product cards here following the same structure -->
-    </div>
-</section>
-
-
- <!-- Section Minuman -->
-<section class="popular-products">
-  <h2>Minuman </h2>
-  <div class="product-grid">
-
-  <!-- BANDUNG -->
-<!-- Es Cendol -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/cendol.jpg" alt="Es Cendol">
-  <h3>Es Cendol</h3>
-  <p>Es Cendol adalah minuman khas Bandung yang terbuat dari tepung beras, gula merah, dan santan, disajikan dengan es serut untuk kesegaran maksimal.</p>
-  <div class="price">
-    <span class="discount-price">Rp.15.000</span>
-    <span class="original-price">Rp.20.000</span>
   </div>
-  <button class="add-to-cart" data-id="5" data-name="Es Cendol" data-price="15000">+ Add</button>
-</div>
+</footer>
 
-<!-- Es Goyobod -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/goyobod.jpg" alt="Es Goyobod">
-  <h3>Es Goyobod</h3>
-  <p>Es Goyobod adalah minuman tradisional khas Sunda yang terdiri dari tepung hunkwe, santan, dan buah-buahan segar yang disajikan dengan es dan sirup manis.</p>
-  <div class="price">
-    <span class="discount-price">Rp.18.000</span>
-    <span class="original-price">Rp.25.000</span>
-  </div>
-  <button class="add-to-cart" data-id="6" data-name="Es Goyobod" data-price="18000">+ Add</button>
-</div>
-
-<!-- Bandrek -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/bandrek.jpg" alt="Bandrek">
-  <h3>Bandrek</h3>
-  <p>Bandrek adalah minuman khas Bandung yang terbuat dari jahe, gula merah, dan rempah-rempah lainnya. Cocok diminum saat cuaca dingin untuk menghangatkan tubuh.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.15.000</span>
-  </div>
-  <button class="add-to-cart" data-id="7" data-name="Bandrek" data-price="10000">+ Add</button>
-</div>
-
-<!-- Bajigur -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/bajigur.jpg" alt="Bajigur">
-  <h3>Bajigur</h3>
-  <p>Bajigur adalah minuman tradisional khas Sunda yang terbuat dari santan, gula aren, dan jahe, memberikan sensasi manis dan hangat.</p>
-  <div class="price">
-    <span class="discount-price">Rp.12.000</span>
-    <span class="original-price">Rp.18.000</span>
-  </div>
-  <button class="add-to-cart" data-id="8" data-name="Bajigur" data-price="12000">+ Add</button>
-</div>
-  <!-- BANDUNG -->
-
-  <!-- JAKARTA -->
-<!-- Bir Pletok -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/bir.jpg" alt="Bir Pletok">
-  <h3>Bir Pletok</h3>
-  <p>Bir Pletok adalah minuman khas Betawi yang terbuat dari rempah-rempah seperti jahe, serai, dan kayu secang, yang memberikan warna merah alami tanpa alkohol.</p>
-  <div class="price">
-    <span class="discount-price">Rp.15.000</span>
-    <span class="original-price">Rp.20.000</span>
-  </div>
-  <button class="add-to-cart" data-id="9" data-name="Bir Pletok" data-price="15000">+ Add</button>
-</div>
-
-<!-- Es Selendang Mayang -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/selendang.jpg" alt="Es Selendang Mayang">
-  <h3>Es Selendang Mayang</h3>
-  <p>Es Selendang Mayang adalah minuman tradisional Jakarta yang terbuat dari kue beras berlapis dengan kuah santan dan gula merah, disajikan dengan es serut.</p>
-  <div class="price">
-    <span class="discount-price">Rp.18.000</span>
-    <span class="original-price">Rp.25.000</span>
-  </div>
-  <button class="add-to-cart" data-id="10" data-name="Es Selendang Mayang" data-price="18000">+ Add</button>
-</div>
-
-<!-- Es Doger -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/esdoger.jpg" alt="Es Doger">
-  <h3>Es Doger</h3>
-  <p>Es Doger adalah es serut khas Jakarta yang disajikan dengan campuran ketan hitam, tape, dan kelapa muda, serta sirup manis berwarna merah jambu.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.15.000</span>
-  </div>
-  <button class="add-to-cart" data-id="11" data-name="Es Doger" data-price="10000">+ Add</button>
-</div>
-
-<!-- Es Podeng -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/podeng.jpg" alt="Es Podeng">
-  <h3>Es Podeng</h3>
-  <p>Es Podeng adalah es krim khas Jakarta yang disajikan dengan roti tawar, kacang, agar-agar, dan susu kental manis, memberikan sensasi rasa yang unik dan manis.</p>
-  <div class="price">
-    <span class="discount-price">Rp.12.000</span>
-    <span class="original-price">Rp.18.000</span>
-  </div>
-  <button class="add-to-cart" data-id="12" data-name="Es Podeng" data-price="12000">+ Add</button>
-</div>
-  <!-- JAKARTA -->
-
-  <!-- YOGYAKARTA -->
-<!-- Wedang Uwuh -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/wedanguwuh.jpg" alt="Wedang Uwuh">
-  <h3>Wedang Uwuh</h3>
-  <p>Wedang Uwuh adalah minuman herbal khas Yogyakarta yang terbuat dari campuran jahe, daun pala, kayu secang, dan rempah-rempah lainnya, memberikan rasa hangat dan menyehatkan.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.15.000</span>
-  </div>
-  <button class="add-to-cart" data-id="13" data-name="Wedang Uwuh" data-price="10000">+ Add</button>
-</div>
-
-<!-- Es Tape Ketan -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/estapeketan.jpg" alt="Es Tape Ketan">
-  <h3>Es Tape Ketan</h3>
-  <p>Es Tape Ketan adalah minuman dingin khas Yogyakarta yang terbuat dari tape ketan hitam manis, disajikan dengan es serut dan gula merah, memberikan rasa segar dan unik.</p>
-  <div class="price">
-    <span class="discount-price">Rp.12.000</span>
-    <span class="original-price">Rp.18.000</span>
-  </div>
-  <button class="add-to-cart" data-id="14" data-name="Es Tape Ketan" data-price="12000">+ Add</button>
-</div>
-
-<!-- Kopi Joss -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/kopijoss.jpg" alt="Kopi Joss">
-  <h3>Kopi Joss</h3>
-  <p>Kopi Joss adalah minuman kopi unik khas Yogyakarta yang disajikan dengan arang membara langsung dicelupkan ke dalam kopi panas, menciptakan sensasi aroma bakar yang khas.</p>
-  <div class="price">
-    <span class="discount-price">Rp.8.000</span>
-    <span class="original-price">Rp.12.000</span>
-  </div>
-  <button class="add-to-cart" data-id="15" data-name="Kopi Joss" data-price="8000">+ Add</button>
-</div>
-
-<!-- Es Semlo -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/essemlo.jpg" alt="Es Semlo">
-  <h3>Es Semlo</h3>
-  <p>Es Semlo adalah minuman khas Yogyakarta yang terbuat dari campuran jahe, serai, dan kayu manis, disajikan dingin dengan es batu, memberikan sensasi segar dan rempah yang khas.</p>
-  <div class="price">
-    <span class="discount-price">Rp.12.000</span>
-    <span class="original-price">Rp.17.000</span>
-  </div>
-  <button class="add-to-cart" data-id="16" data-name="Es Semlo" data-price="12000">+ Add</button>
-</div>
-  <!-- YOGYAKARTA -->
-
-
-  <!-- SEMARANG -->
-<!-- Wedang Tahu -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/wedangtahu.jpg" alt="Wedang Tahu">
-  <h3>Wedang Tahu</h3>
-  <p>Wedang Tahu adalah minuman khas Semarang yang terbuat dari kembang tahu yang lembut, disajikan dengan kuah jahe hangat dan manis.</p>
-  <div class="price">
-    <span class="discount-price">Rp.8.000</span>
-    <span class="original-price">Rp.12.000</span>
-  </div>
-  <button class="add-to-cart" data-id="17" data-name="Wedang Tahu" data-price="8000">+ Add</button>
-</div>
-
-<!-- Es Gempol Pleret -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/esgempolpleret.jpg" alt="Es Gempol Pleret">
-  <h3>Es Gempol Pleret</h3>
-  <p>Es Gempol Pleret adalah minuman khas Semarang yang terdiri dari bola-bola tepung beras yang kenyal, disajikan dengan santan dan gula merah cair serta es serut yang menyegarkan.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.15.000</span>
-  </div>
-  <button class="add-to-cart" data-id="18" data-name="Es Gempol Pleret" data-price="10000">+ Add</button>
-</div>
-
-<!-- Es Congklik -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/escongklik.jpg" alt="Es Congklik">
-  <h3>Es Congklik</h3>
-  <p>Es Congklik adalah es krim tradisional khas Semarang yang disajikan dengan topping buah, roti tawar, dan sirup manis, memberikan rasa segar yang manis dan beragam tekstur.</p>
-  <div class="price">
-    <span class="discount-price">Rp.12.000</span>
-    <span class="original-price">Rp.18.000</span>
-  </div>
-  <button class="add-to-cart" data-id="19" data-name="Es Congklik" data-price="12000">+ Add</button>
-</div>
-
-<!-- Es Dawet Telasih -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/esdawettelasih.jpg" alt="Es Dawet Telasih">
-  <h3>Es Dawet Telasih</h3>
-  <p>Es Dawet Telasih adalah minuman khas Jawa yang menggunakan cendol, santan, gula merah, dan tambahan biji telasih yang memberikan sensasi rasa yang segar dan unik.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.15.000</span>
-  </div>
-  <button class="add-to-cart" data-id="20" data-name="Es Dawet Telasih" data-price="10000">+ Add</button>
-</div>
-  <!-- SEMARANG -->
-
-  <!-- SURABAYA -->
-<!-- Es Sinom -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/essinom.jpg" alt="Es Sinom">
-  <h3>Es Sinom</h3>
-  <p>Es Sinom adalah minuman khas Surabaya yang terbuat dari campuran kunyit muda, asam jawa, dan gula merah. Minuman ini menyegarkan serta berkhasiat untuk kesehatan.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.15.000</span>
-  </div>
-  <button class="add-to-cart" data-id="21" data-name="Es Sinom" data-price="10000">+ Add</button>
-</div>
-
-<!-- Es Cincau -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/escincau.jpg" alt="Es Cincau">
-  <h3>Es Cincau</h3>
-  <p>Es Cincau adalah minuman khas Surabaya yang terbuat dari cincau hitam atau hijau, disajikan dengan santan dan gula merah, memberikan sensasi segar dan kenyal.</p>
-  <div class="price">
-    <span class="discount-price">Rp.8.000</span>
-    <span class="original-price">Rp.12.000</span>
-  </div>
-  <button class="add-to-cart" data-id="22" data-name="Es Cincau" data-price="8000">+ Add</button>
-</div>
-
-<!-- Es Degan -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/esdegan.jpg" alt="Es Degan">
-  <h3>Es Degan</h3>
-  <p>Es Degan adalah minuman segar khas Surabaya yang terbuat dari air kelapa muda dan daging kelapa, disajikan dengan es batu untuk sensasi yang lebih menyegarkan.</p>
-  <div class="price">
-    <span class="discount-price">Rp.12.000</span>
-    <span class="original-price">Rp.17.000</span>
-  </div>
-  <button class="add-to-cart" data-id="23" data-name="Es Degan" data-price="12000">+ Add</button>
-</div>
-
-<!-- Es Beras Kencur -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/esberaskencur.jpg" alt="Es Beras Kencur">
-  <h3>Es Beras Kencur</h3>
-  <p>Es Beras Kencur adalah minuman tradisional khas Jawa yang populer di Surabaya, terbuat dari beras dan kencur yang memberikan rasa segar serta manfaat kesehatan.</p>
-  <div class="price">
-    <span class="discount-price">Rp.9.000</span>
-    <span class="original-price">Rp.14.000</span>
-  </div>
-  <button class="add-to-cart" data-id="24" data-name="Es Beras Kencur" data-price="9000">+ Add</button>
-</div>
-  <!-- SURABAYA -->
-
-
-  <!-- MALANG -->
-
-  
-  <!-- MALANG -->
-
-  <!-- BALI -->
-
-  <!-- Es Tambring -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/estambring.jpg" alt="Es Tambring">
-  <h3>Es Tambrinng</h3>
-  <p>Es Tambring adalah minuman tradisional khas Bali yang terbuat dari campuran air kelapa muda dan telur ayam kampung mentah, dengan tambahan gula, sedikit garam, dan perasan jeruk nipis atau asam jawa.</p>
-  <div class="price">
-    <span class="discount-price">Rp.9.000</span>
-    <span class="original-price">Rp.14.000</span>
-  </div>
-  <button class="add-to-cart" data-id="24" data-name="Es Tambring" data-price="9000">+ Add</button>
-</div>
-
-<!-- Es Kuwut -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/eskuwut.jpg" alt="Es Kuwut">
-  <h3>Es Kuwut</h3>
-  <p>Es Kuwut adalah minuman segar khas Bali yang terbuat dari campuran air kelapa, potongan kelapa muda, melon, biji selasih, dan perasan jeruk nipis atau jeruk lemon.</p>
-  <div class="price">
-    <span class="discount-price">Rp.9.000</span>
-    <span class="original-price">Rp.14.000</span>
-  </div>
-  <button class="add-to-cart" data-id="24" data-name="Es Kuwut" data-price="9000">+ Add</button>
-</div>
-
-<!-- Es Daluman -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/esdaluman.jpg" alt="Es Daluman">
-  <h3>Es Daluman</h3>
-  <p>Es Daluman adalah minuman khas Bali yang terbuat dari daun cincau hijau (daluman), santan, dan gula merah cair.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.14.000</span>
-  </div>
-  <button class="add-to-cart" data-id="24" data-name="Es Daluman" data-price="9000">+ Add</button>
-</div>
-
-<!-- Es Ancruk -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/esancruk.jpg" alt="Es Ancruk">
-  <h3>Es Ancruk</h3>
-  <p>Es Ancruk adalah minuman tradisional khas Bali yang terbuat dari bubur ancruk, yaitu adonan tepung beras yang dibentuk seperti mutiara kecil.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.14.000</span>
-  </div>
-  <button class="add-to-cart" data-id="24" data-name="Es Ancruk" data-price="9000">+ Add</button>
-</div>
- <!-- BALI -->
-
- <!-- PADANG -->
-
-<!-- Teh Talua -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/tehtalua.jpg" alt="Teh Talua">
-  <h3>Teh Talua</h3>
-  <p>Teh Talua adalah minuman khas dari Sumatera Barat, Indonesia, yang terbuat dari campuran teh panas, kuning telur, dan gula.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.14.000</span>
-  </div>
-  <button class="add-to-cart" data-id="24" data-name="Teh Talua" data-price="9000">+ Add</button>
-</div>
-
-<!-- Ampiang Dadiah -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/ampiangdadiah.jpeg" alt="Ampiang Dadiah">
-  <h3>Ampiang Dadiah</h3>
-  <p>Ampiang Dadiah adalah makanan tradisional Minangkabau, Sumatera Barat, yang dibuat dari dadiah dan disajikan bersama ampiang.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.14.000</span>
-  </div>
-  <button class="add-to-cart" data-id="24" data-name="Ampiang Dadiah" data-price="9000">+ Add</button>
-</div>
-
-<!-- Es Tebak -->
-<div class="product-card">
-  <span class="label sale">Sale</span>
-  <img src="img/estebak.jpg" alt="Es Tebak">
-  <h3>Es Tebak</h3>
-  <p>Es Tebak adalah minuman segar khas Sumatera Barat yang terdiri dari berbagai campuran manis dan kenyal seperti cincau hitam, kolang-kaling, kelapa muda, sagu mutiara, dan potongan buah, disajikan dengan sirup merah dan susu kental manis.</p>
-  <div class="price">
-    <span class="discount-price">Rp.10.000</span>
-    <span class="original-price">Rp.14.000</span>
-  </div>
-  <button class="add-to-cart" data-id="24" data-name="Es Tebak" data-price="9000">+ Add</button>
-</div>
-
- <!-- PADANG -->
-      <!-- Add more product cards here following the same structure -->
-  </div>
-</section>
-
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(36, 130, 39, 0.2); display: flex; justify-content: center; align-items: center; height: 50px;">
-    ©2020 KuyJajan
-  </div>
-  <!-- Copyright -->
-    <footer>
-      <footer id="footer">
-      <div class="footer-container">
-          <div class="footer-contact">
-              <h3>Contact Us</h3>
-              <ul class="contact-info">
-                  <li><i class="ri-map-pin-2-fill"></i> Jl. Merdeka No.123, Bandung, Indonesia</li>
-                  <li><i class="ri-mail-fill"></i> info@kuyjajan.com</li>
-                  <li><i class="ri-phone-fill"></i> +62 856-2448-2521</li>
-              </ul>
-          </div>
-          
-          <div class="footer-social">
-              <h3>Follow Us</h3>
-              <ul class="social-icons">
-                  <li><a href="#"><i class="ri-facebook-circle-fill"></i> Facebook</a></li>
-                  <li><a href="#"><i class="ri-instagram-fill"></i> Instagram</a></li>
-                  <li><a href="#"><i class="ri-twitter-fill"></i> Twitter</a></li>
-              </ul>
-          </div>
-      </div>
-      <div class="footer-bottom">
-          <p>&copy; 2024 KuyJajan. All rights reserved.</p>
-      </div>
-
+<!-- JavaScript -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Fungsi untuk menambahkan produk ke keranjang
+    // Fungsi menambahkan produk ke keranjang
     addToCartButtons.forEach(button => {
       button.addEventListener('click', function () {
         const productId = this.getAttribute('data-id');
         const productName = this.getAttribute('data-name');
         const productPrice = parseFloat(this.getAttribute('data-price'));
 
-        // Cari produk di keranjang
         let productInCart = cart.find(item => item.id === productId);
-        
-        // Jika produk sudah ada, tambahkan kuantitasnya
+
         if (productInCart) {
           productInCart.quantity += 1;
         } else {
-          // Jika produk belum ada, tambahkan produk baru ke keranjang
           const product = { id: productId, name: productName, price: productPrice, quantity: 1 };
           cart.push(product);
         }
 
-        // Simpan kembali ke localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
-
-        // Perbarui jumlah item di ikon keranjang
         updateCartCount();
-
-        // Notifikasi
         alert(`${productName} berhasil ditambahkan ke keranjang!`);
       });
     });
 
-    // Fungsi untuk memperbarui jumlah item di ikon keranjang
+    // Fungsi update ikon keranjang
     function updateCartCount() {
       const cartCountElement = document.querySelector('.cart-count');
       const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
       cartCountElement.textContent = totalItems;
     }
 
-    // Panggil saat halaman dimuat
-    updateCartCount();
-  });
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
+    // Filter produk berdasarkan kota
     const cityFilter = document.getElementById('cityFilter');
     const productCards = document.querySelectorAll('.product-card');
 
-    // Function to filter products by selected city
     function filterProductsByCity() {
       const selectedCity = cityFilter.value;
-
-      productCards.forEach(function (card) {
+      productCards.forEach(card => {
         const productCity = card.getAttribute('data-city');
-        
-        if (selectedCity === 'all' || productCity === selectedCity) {
-          card.style.display = 'block'; // Show product
-        } else {
-          card.style.display = 'none'; // Hide product
-        }
+        card.style.display = (selectedCity === 'all' || productCity === selectedCity) ? 'block' : 'none';
       });
     }
 
-    // Event listener for dropdown change
     cityFilter.addEventListener('change', filterProductsByCity);
-
-    // Initial filter (optional, shows all products by default)
     filterProductsByCity();
+    updateCartCount();
   });
 </script>
 
-
+</body>
 </html>
