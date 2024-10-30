@@ -1,78 +1,84 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keranjang Belanja</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-100">
 
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th>Produk</th>
-        <th>Harga Satuan</th>
-        <th>Kuantitas</th>
-        <th>Total Harga</th>
-        <th>Aksi</th>
-      </tr>
-    </thead>
-    <tbody id="cart-items">
-      <!-- Produk di keranjang akan ditambahkan di sini -->
-    </tbody>
-  </table>
+    <header class="bg-green-500 p-4 flex justify-between items-center text-white">
+        <h1 class="text-xl font-bold">KuyJajan</h1>
+        <div class="flex items-center gap-4">
+            <span class="text-sm">adzka.mukhayyar</span>
+            <button class="text-sm">Home</button>
+            <button class="text-sm">About</button>
+            <button class="text-sm">Product</button>
+        </div>
+    </header>
 
-  <div class="total">
-    <p>Total (<span id="total-products">0</span> produk): Rp<span id="total-price">0</span></p>
-    <button>Checkout</button>
-  </div>
+    <div class="container mx-auto p-6">
+        <h2 class="text-2xl font-bold mb-6">Keranjang Belanja</h2>
+        
+        <div class="bg-white rounded-lg shadow-lg p-4">
+            <div class="flex items-center justify-between border-b pb-2 mb-4">
+                <span class="font-bold text-lg">Rexus Official Shop</span>
+                <span class="text-green-500">Mall ORI</span>
+            </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const cartItemsContainer = document.querySelector('#cart-items');
-      const totalProductsElement = document.querySelector('#total-products');
-      const totalPriceElement = document.querySelector('#total-price');
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
-      // Fungsi untuk menampilkan produk di keranjang
-      function displayCartItems() {
-        let totalPrice = 0;
-        let totalProducts = 0;
-  
-        cartItemsContainer.innerHTML = ''; // Kosongkan elemen sebelumnya
-        cart.forEach(item => {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td><input type="checkbox" checked></td>
-            <td><p>${item.name}</p></td>
-            <td>Rp${item.price.toLocaleString()}</td>
-            <td>
-              <button class="kurang" data-id="${item.id}">-</button>
-              <span class="kuantitas">${item.quantity}</span>
-              <button class="tambah" data-id="${item.id}">+</button>
-            </td>
-            <td>Rp${(item.price * item.quantity).toLocaleString()}</td>
-            <td>
-              <button class="hapus" data-id="${item.id}">Hapus</button>
-            </td>
-          `;
-          cartItemsContainer.appendChild(row);
-  
-          totalPrice += item.price * item.quantity;
-          totalProducts += item.quantity;
-        });
-  
-        // Perbarui total harga dan jumlah produk
-        totalPriceElement.textContent = totalPrice.toLocaleString();
-        totalProductsElement.textContent = totalProducts;
-      }
-  
-      // Tampilkan produk saat halaman dimuat
-      displayCartItems();
-    });
-  </script>
-  
+            <!-- Product List -->
+            <div class="space-y-4">
+                <!-- Product Item -->
+                <div class="flex items-center space-x-4">
+                    <input type="checkbox" class="form-checkbox">
+                    <img src="https://via.placeholder.com/60" alt="product image" class="w-16 h-16 rounded">
+                    <div class="flex-grow">
+                        <p class="text-sm font-semibold">Rexus Monitor Stand Trant FP03</p>
+                        <p class="text-gray-500 text-sm">Varian: Hitam</p>
+                    </div>
+                    <p class="font-semibold text-green-500">Rp319.000</p>
+                    <div class="flex items-center space-x-2">
+                        <button class="text-gray-500">Hapus</button>
+                        <input type="number" value="1" class="w-12 text-center border rounded">
+                    </div>
+                </div>
+                
+                <!-- Repeat for other products -->
+                <div class="flex items-center space-x-4">
+                    <input type="checkbox" class="form-checkbox">
+                    <img src="https://via.placeholder.com/60" alt="product image" class="w-16 h-16 rounded">
+                    <div class="flex-grow">
+                        <p class="text-sm font-semibold">Rexus Keyboard Mousepad Bundling AYAKA Series TKL</p>
+                        <p class="text-gray-500 text-sm">Varian: Konotori KG5, Blue</p>
+                    </div>
+                    <p class="font-semibold text-green-500">Rp738.000</p>
+                    <div class="flex items-center space-x-2">
+                        <button class="text-gray-500">Hapus</button>
+                        <input type="number" value="2" class="w-12 text-center border rounded">
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <input type="checkbox" class="form-checkbox">
+                    <img src="https://via.placeholder.com/60" alt="product image" class="w-16 h-16 rounded">
+                    <div class="flex-grow">
+                        <p class="text-sm font-semibold">Rexus Gaming Chair RGC-105 / R</p>
+                        <p class="text-gray-500 text-sm">Varian: Grey</p>
+                    </div>
+                    <p class="font-semibold text-green-500">Rp2.549.000</p>
+                    <div class="flex items-center space-x-2">
+                        <button class="text-gray-500">Hapus</button>
+                        <input type="number" value="1" class="w-12 text-center border rounded">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center border-t pt-4 mt-4">
+                <p class="text-sm text-gray-600">Gratis Ongkir s/d Rp20.000</p>
+                <button class="bg-green-500 text-white px-4 py-2 rounded">Checkout</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
