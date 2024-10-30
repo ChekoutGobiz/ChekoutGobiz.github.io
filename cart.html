@@ -35,17 +35,12 @@
       const totalProductsElement = document.querySelector('#total-products');
       const totalPriceElement = document.querySelector('#total-price');
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-      // Fungsi untuk menyimpan keranjang ke localStorage
-      function saveCart() {
-        localStorage.setItem('cart', JSON.stringify(cart));
-      }
-
+  
       // Fungsi untuk menampilkan produk di keranjang
       function displayCartItems() {
         let totalPrice = 0;
         let totalProducts = 0;
-
+  
         cartItemsContainer.innerHTML = ''; // Kosongkan elemen sebelumnya
         cart.forEach(item => {
           const row = document.createElement('tr');
@@ -54,61 +49,30 @@
             <td><p>${item.name}</p></td>
             <td>Rp${item.price.toLocaleString()}</td>
             <td>
-              <button class="kurang" data-name="${item.name}">-</button>
+              <button class="kurang" data-id="${item.id}">-</button>
               <span class="kuantitas">${item.quantity}</span>
-              <button class="tambah" data-name="${item.name}">+</button>
+              <button class="tambah" data-id="${item.id}">+</button>
             </td>
             <td>Rp${(item.price * item.quantity).toLocaleString()}</td>
             <td>
-              <button class="hapus" data-name="${item.name}">Hapus</button>
+              <button class="hapus" data-id="${item.id}">Hapus</button>
             </td>
           `;
           cartItemsContainer.appendChild(row);
-
+  
           totalPrice += item.price * item.quantity;
           totalProducts += item.quantity;
         });
-
+  
         // Perbarui total harga dan jumlah produk
         totalPriceElement.textContent = totalPrice.toLocaleString();
         totalProductsElement.textContent = totalProducts;
       }
-
-      // Event Listener untuk tombol `kurang`, `tambah`, dan `hapus` di keranjang
-      document.addEventListener('click', function (event) {
-        const name = event.target.getAttribute('data-name');
-
-        if (event.target.classList.contains('kurang')) {
-          const product = cart.find(item => item.name === name);
-          if (product && product.quantity > 1) {
-            product.quantity--;
-          } else {
-            cart = cart.filter(item => item.name !== name);
-          }
-          saveCart();
-          displayCartItems();
-        }
-
-        if (event.target.classList.contains('tambah')) {
-          const product = cart.find(item => item.name === name);
-          if (product) {
-            product.quantity++;
-          }
-          saveCart();
-          displayCartItems();
-        }
-
-        if (event.target.classList.contains('hapus')) {
-          cart = cart.filter(item => item.name !== name);
-          saveCart();
-          displayCartItems();
-        }
-      });
-
+  
       // Tampilkan produk saat halaman dimuat
       displayCartItems();
     });
   </script>
-
+  
 </body>
 </html>
