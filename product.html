@@ -220,26 +220,55 @@
   document.addEventListener('DOMContentLoaded', function () {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const userId = "YOUR_USER_ID"; // Ganti dengan user_id yang sesuai atau ambil dari sesi pengguna
 
     // Fungsi menambahkan produk ke keranjang
+    function addToCart(productId, productName, productPrice) {
+      fetch('http://localhost:8080/api/cart/add', { // Sesuaikan URL ini jika berbeda
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          product_id: productId,
+          quantity: 1
+        }),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Gagal menambahkan produk ke keranjang');
+        }
+        return response.json();
+      })
+      .then(cartData => {
+        console.log(`${productName} berhasil ditambahkan ke keranjang!`);
+        updateLocalCart(cartData);
+        updateCartCount();
+        alert(`${productName} berhasil ditambahkan ke keranjang!`);
+      })
+      .catch(error => console.error('Error:', error));
+    }
+
+    // Fungsi untuk memperbarui localStorage dengan data dari backend
+    function updateLocalCart(cartData) {
+      const updatedCart = cartData.items.map(item => ({
+        id: item.product_id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+      }));
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+    }
+
+    // Event listener untuk tombol "Add to Cart"
     addToCartButtons.forEach(button => {
       button.addEventListener('click', function () {
         const productId = this.getAttribute('data-id');
         const productName = this.getAttribute('data-name');
         const productPrice = parseFloat(this.getAttribute('data-price'));
 
-        let productInCart = cart.find(item => item.id === productId);
-
-        if (productInCart) {
-          productInCart.quantity += 1;
-        } else {
-          const product = { id: productId, name: productName, price: productPrice, quantity: 1 };
-          cart.push(product);
-        }
-
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-        alert(`${productName} berhasil ditambahkan ke keranjang!`);
+        addToCart(productId, productName, productPrice);
       });
     });
 
@@ -250,23 +279,11 @@
       cartCountElement.textContent = totalItems;
     }
 
-    // Filter produk berdasarkan kota
-    const cityFilter = document.getElementById('cityFilter');
-    const productCards = document.querySelectorAll('.product-card');
-
-    function filterProductsByCity() {
-      const selectedCity = cityFilter.value;
-      productCards.forEach(card => {
-        const productCity = card.getAttribute('data-city');
-        card.style.display = (selectedCity === 'all' || productCity === selectedCity) ? 'block' : 'none';
-      });
-    }
-
-    cityFilter.addEventListener('change', filterProductsByCity);
-    filterProductsByCity();
+    // Panggil updateCartCount saat halaman dimuat
     updateCartCount();
   });
 </script>
+
 
 </body>
 </html>
