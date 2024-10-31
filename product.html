@@ -78,17 +78,28 @@
  <header>
    <a href="index.html" class="logo"><img src="img/logo kuyjajan.jpg" alt="KuyJajan Logo"></a>
    <ul class="navbar">
-     <li><a href="index.html" class="active">Home</a></li>
-     <li><a href="about.html" class="active">Region</a></li>
+     <li><a href="index.html" >Home</a></li>
+     <li><a href="about.html" >Region</a></li>
      <li><a href="product.html" class="active">Product</a></li>
    </ul>    
-   <div class="icons">
-     <div class="bx bx-menu" id="menu-icon"></div>
-     <div class="icons-item">
-      <div class="icon-item" style="position: relative">
-        <a href="cart.html"><i class="ri-shopping-cart-line"></i></a>
-        <span class="cart-count">0</span>
+   <div class="icons-item">
+    <!-- Icon Pencarian -->
+    <div class="icon-item" style="position: relative; display: inline-block;">
+      <a href="#" id="search-icon"><i class="ri-search-line"></i></a>
+      <span>Search</span>
+      <!-- Kolom Pencarian -->
+      <div id="search-container" style="display: none; position: absolute; left: 0; top: 30px;">
+        <input type="text" placeholder="Search here..." id="search-box" style="padding: 5px; width: 200px;">
       </div>
+    </div>
+  
+    <!-- Icon Keranjang -->
+    <div class="icon-item" style="position: relative; display: inline-block; margin-left: 20px;">
+      <a href="cart.html"><i class="ri-shopping-cart-line"></i></a>
+      <span class="cart-count">0</span>
+    </div>
+  </div>
+  
     </div>
    </div>
  </header>
@@ -241,6 +252,13 @@
     // Tampilkan semua produk saat halaman pertama kali dimuat
     displayProducts('all');
   });
+
+  document.getElementById('search-icon').addEventListener('click', (e) => {
+    e.preventDefault();
+    const searchContainer = document.getElementById('search-container');
+    searchContainer.style.display = searchContainer.style.display === 'none' ? 'block' : 'none';
+  });
+  
 </script>
 
 </body>
