@@ -8,10 +8,31 @@
     <script>
         // Fungsi untuk menghapus item dari keranjang
         function hapusItem(event) {
-            // Mengambil elemen induk dari tombol "Hapus" yang diklik
             const item = event.target.closest(".product-item");
-            // Menghapus elemen item dari DOM
             item.remove();
+        }
+
+        // Fungsi untuk checkout item yang dipilih
+        function checkoutSelectedItems() {
+            const selectedItems = [];
+            document.querySelectorAll(".product-item").forEach(item => {
+                if (item.querySelector("input[type='checkbox']").checked) {
+                    const productName = item.querySelector("p.text-sm.font-semibold").textContent;
+                    const productPrice = item.querySelector("p.font-semibold.text-green-500").textContent;
+                    const productQty = item.querySelector("input[type='number']").value;
+                    
+                    selectedItems.push({
+                        name: productName,
+                        price: productPrice,
+                        qty: productQty
+                    });
+                }
+            });
+
+            // Simpan item yang dipilih di localStorage
+            localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+            // Pindah ke halaman checkout
+            window.location.href = "checkout.html";
         }
     </script>
 </head>
@@ -85,11 +106,11 @@
 
             <div class="flex justify-between items-center border-t pt-4 mt-4">
                 <p class="text-sm text-gray-600">Gratis Ongkir s/d Rp20.000</p>
-                <button class="bg-green-500 text-white px-4 py-2 rounded">Checkout</button>
+                <button onclick="checkoutSelectedItems()" class="bg-green-500 text-white px-4 py-2 rounded text-sm">Checkout</button>
             </div>
         </div>
 
-        <!-- Recommendation Section -->
+        <!-- Recommended Products -->
         <div class="mt-10">
             <h2 class="text-xl font-bold mb-4 text-gray-700">KAMU MUNGKIN JUGA SUKA</h2>
             
@@ -130,9 +151,10 @@
             </div>
 
             <div class="text-right mt-4">
-                <a href="#" class="text-green-500 text-sm font-semibold">Lihat Semua &gt;</a>
-            </div>
+              <button onclick="window.location.href='product.html'" class="bg-green-500 text-white px-4 py-2 rounded text-sm font-semibold">Lihat Semua &gt;</button>
+          </div>          
         </div>
+
     </div>
 </body>
 </html>
