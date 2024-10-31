@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-green-100 font-sans antialiased">
+    <!-- Container -->
+    <div class="max-w-4xl mx-auto p-6 bg-white shadow-lg mt-10 rounded-lg">
+        <!-- Header -->
+        <header class="flex justify-between items-center pb-4 border-b">
+            <h1 class="text-2xl font-bold text-orange-500">Checkout</h1>
+            <img src="img/logo kuyjajan.jpg" alt="Logo" class="h-8">
+        </header>
+
+        <!-- Shipping Address -->
+        <section class="my-6">
+            <h2 class="text-lg font-bold mb-2">Alamat Pengiriman</h2>
+            <p class="text-gray-600">Nama: Wafid Adzka (082)</p>
+            <p class="text-gray-600">Jalan XYZ, Kota ABC, Provinsi DEF, 12345</p>
+            <a href="#" class="text-blue-500 text-sm">Ubah alamat pengiriman</a>
+        </section>
+
+        <!-- Ordered Products Summary -->
+        <section class="my-6">
+            <h2 class="text-lg font-bold mb-2">Produk Dipesan</h2>
+            <div class="bg-gray-100 rounded-lg p-4">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <p class="font-semibold">AyamBetutu</p>
+                        <p class="text-sm text-gray-500">Pedas</p>
+                    </div>
+                    <div class="text-right">
+                        <p>Harga: Rp 80.000</p>
+                        <p>Jumlah: 1</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <p class="font-semibold">Batagor</p>
+                        <p class="text-sm text-gray-500">Tidak Pedas</p>
+                    </div>
+                    <div class="text-right">
+                        <p>Harga: Rp 15.000</p>
+                        <p>Jumlah: 2</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="font-semibold">KopiJoss</p>
+                        <p class="text-sm text-gray-500">Pakai Gula</p>
+                    </div>
+                    <div class="text-right">
+                        <p>Harga: Rp 10.000</p>
+                        <p>Jumlah: 1</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voucher and Shipping Cost -->
+        <section class="my-6">
+            <div class="flex justify-between items-center mb-4">
+                <label class="font-semibold text-gray-600">Voucher</label>
+                <input type="text" placeholder="Masukkan kode voucher" class="border rounded p-2 w-1/2">
+                <button class="bg-green-500 text-white px-4 py-2 rounded">Gunakan</button>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="font-semibold text-gray-600">Ongkos Kirim</span>
+                <p>Rp 20.000</p>
+            </div>
+        </section>
+
+        <!-- Payment Methods -->
+        <section class="my-6">
+            <h2 class="text-lg font-bold mb-2">Metode Pembayaran</h2>
+            <div class="flex gap-4">
+                <button class="border rounded p-2 w-1/3">Transfer Bank</button>
+                <button class="border rounded p-2 w-1/3">Kartu Debit</button>
+                <button class="border rounded p-2 w-1/3">E-Wallet</button>
+            </div>
+            <div class="mt-4">
+                <label class="text-gray-600">Pilih Bank</label>
+                <select class="border rounded p-2 w-full">
+                    <option>Bank BCA</option>
+                    <option>Bank Mandiri</option>
+                    <option>Bank BRI</option>
+                    <option>Bank BNI</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Summary and Checkout -->
+        <section class="my-6">
+            <div class="flex justify-between items-center border-t pt-4">
+                <p class="text-lg font-semibold">Total Pembayaran</p>
+                <p class="text-2xl font-bold text-green-500">Rp 140.000</p>
+            </div>
+            <button class="w-full bg-orange-500 text-white p-3 rounded mt-4 font-semibold">Buat Pesanan</button>
+        </section>
+    </div>
+</body>
+</html>
