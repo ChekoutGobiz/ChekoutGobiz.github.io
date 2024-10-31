@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        // Fungsi untuk menghapus item dari keranjang
+        function hapusItem(event) {
+            // Mengambil elemen induk dari tombol "Hapus" yang diklik
+            const item = event.target.closest(".product-item");
+            // Menghapus elemen item dari DOM
+            item.remove();
+        }
+    </script>
 </head>
 <body class="bg-gray-100">
 
@@ -12,9 +21,9 @@
         <h1 class="text-xl font-bold">KuyJajan</h1>
         <div class="flex items-center gap-4">
             <span class="text-sm">adzka.mukhayyar</span>
-            <button class="text-sm"><li><a href="index.html">Home</a></li></button>
-            <button class="text-sm"><li><a href="about.html">Region</a></li></button>
-            <button class="text-sm"><li><a href="product.html">Product</a></li></button>
+            <button class="text-sm"><a href="index.html">Home</a></button>
+            <button class="text-sm"><a href="about.html">Region</a></button>
+            <button class="text-sm"><a href="product.html">Product</a></button>
         </div>
     </header>
 
@@ -30,7 +39,7 @@
             <!-- Product List -->
             <div class="space-y-4">
                 <!-- Product Item -->
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-4 product-item">
                     <input type="checkbox" class="form-checkbox">
                     <img src="img/ayambetutu.webp" alt="product image" class="w-16 h-16 rounded">
                     <div class="flex-grow">
@@ -39,13 +48,13 @@
                     </div>
                     <p class="font-semibold text-green-500">Rp80.000</p>
                     <div class="flex items-center space-x-2">
-                        <button class="text-gray-500">Hapus</button>
+                        <button class="text-gray-500" onclick="hapusItem(event)">Hapus</button>
                         <input type="number" value="1" class="w-12 text-center border rounded">
                     </div>
                 </div>
                 
                 <!-- Repeat for other products -->
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-4 product-item">
                     <input type="checkbox" class="form-checkbox">
                     <img src="img/batagor.png" alt="product image" class="w-16 h-16 rounded">
                     <div class="flex-grow">
@@ -54,12 +63,12 @@
                     </div>
                     <p class="font-semibold text-green-500">Rp15.000</p>
                     <div class="flex items-center space-x-2">
-                        <button class="text-gray-500">Hapus</button>
+                        <button class="text-gray-500" onclick="hapusItem(event)">Hapus</button>
                         <input type="number" value="2" class="w-12 text-center border rounded">
                     </div>
                 </div>
                 
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-4 product-item">
                     <input type="checkbox" class="form-checkbox">
                     <img src="img/kopijoss.jpg" alt="product image" class="w-16 h-16 rounded">
                     <div class="flex-grow">
@@ -68,7 +77,7 @@
                     </div>
                     <p class="font-semibold text-green-500">Rp10.000</p>
                     <div class="flex items-center space-x-2">
-                        <button class="text-gray-500">Hapus</button>
+                        <button class="text-gray-500" onclick="hapusItem(event)">Hapus</button>
                         <input type="number" value="1" class="w-12 text-center border rounded">
                     </div>
                 </div>
@@ -98,7 +107,7 @@
                 <div class="bg-white rounded-lg shadow-md p-4">
                     <img src="img/rujak.jpg" alt="product image" class="w-full h-32 object-cover rounded mb-4">
                     <p class="text-sm font-semibold">Rujak</p>
-                    <p class="text-green-500 font-bold mt-2">Rp20.00</p>
+                    <p class="text-green-500 font-bold mt-2">Rp20.000</p>
                     <p class="text-gray-500 text-sm">31 Terjual</p>
                     <span class="inline-block bg-green-100 text-green-600 text-xs font-semibold px-2 py-1 mt-2 rounded">Bebas Buah Buahan</span>
                 </div>
