@@ -26,17 +26,17 @@ func SetupRoutes() http.Handler {
 	r.HandleFunc("/products", controllers.GetProducts).Methods("GET")
 	r.HandleFunc("/products/region", controllers.GetProductsByRegion).Methods("GET")
 
-	// Cart routes
-	r.HandleFunc("/cart", controllers.AddToCart).Methods("POST")
-	r.HandleFunc("/cart", controllers.GetCart).Methods("GET")
-	r.HandleFunc("/cart/item", controllers.UpdateCartItem).Methods("PUT")
-	r.HandleFunc("/cart/item", controllers.RemoveCartItem).Methods("DELETE")
+	// Cart routes (API for handling the cart and checkout/receipt generation)
+	r.HandleFunc("/cart", controllers.AddToCart).Methods("POST")        // Add items to the cart
+	r.HandleFunc("/cart", controllers.GetCart).Methods("GET")           // Retrieve the cart content (acts as a receipt)
+	r.HandleFunc("/cart/item", controllers.UpdateCartItem).Methods("PUT") // Update a specific cart item
+	r.HandleFunc("/cart/item", controllers.RemoveCartItem).Methods("DELETE") // Remove a specific item from the cart
 
 	// Configure CORS
 	corsHandler := handlers.CORS(
-		handlers.AllowedOrigins([]string{"http://127.0.0.1:5501"}), // Allow Live Server origin
-		handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"}), // Allowed methods
-		handlers.AllowedHeaders([]string{"Content-Type", "Authorization"}),
+		handlers.AllowedOrigins([]string{"http://127.0.0.1:5501"}),              // Allow Live Server origin
+		handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"}),       // Allowed methods
+		handlers.AllowedHeaders([]string{"Content-Type", "Authorization"}),      // Allowed headers for CORS
 	)
 
 	return corsHandler(r)
