@@ -91,7 +91,41 @@
         <button onclick="selectPaymentMethod(this)" class="payment-button bg-gray-100 text-gray-700 px-4 py-2 rounded border border-gray-300">BCA OneKlik</button>
         <button onclick="selectPaymentMethod(this)" class="payment-button bg-gray-100 text-gray-700 px-4 py-2 rounded border border-gray-300">Bayar Tunai di Mitra/Agen</button>
     </div>
-
+    <h3 class="text-md font-semibold mt-4 mb-2">Pilih Bank</h3>
+    <div class="flex flex-col space-y-2">
+        <label class="flex items-center">
+            <input type="radio" name="bank" value="seabank" class="mr-2">
+            <span class="text-gray-700">SeaBank <span class="text-sm text-gray-500">Bebas Biaya Penanganan</span></span>
+        </label>
+        <label class="flex items-center">
+            <input type="radio" name="bank" value="bca" class="mr-2">
+            <span class="text-gray-700">Bank BCA</span>
+        </label>
+        <label class="flex items-center">
+            <input type="radio" name="bank" value="mandiri" class="mr-2">
+            <span class="text-gray-700">Bank Mandiri</span>
+        </label>
+        <label class="flex items-center">
+            <input type="radio" name="bank" value="bni" class="mr-2">
+            <span class="text-gray-700">Bank BNI</span>
+        </label>
+        <label class="flex items-center">
+            <input type="radio" name="bank" value="bri" class="mr-2" checked>
+            <span class="text-gray-700">Bank BRI</span>
+        </label>
+        <label class="flex items-center">
+            <input type="radio" name="bank" value="bsi" class="mr-2">
+            <span class="text-gray-700">Bank Syariah Indonesia (BSI)</span>
+        </label>
+        <label class="flex items-center">
+            <input type="radio" name="bank" value="permata" class="mr-2">
+            <span class="text-gray-700">Bank Permata</span>
+        </label>
+        <label class="flex items-center">
+            <input type="radio" name="bank" value="lainnya" class="mr-2">
+            <span class="text-gray-700">Bank lainnya <span class="text-sm text-gray-500">Terdapat perubahan nama bank penerima dari Bank Mandiri ke Bank SeaBank.</span></span>
+        </label>
+    </div>
 </section>
 
 <script>
