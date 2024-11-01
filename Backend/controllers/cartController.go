@@ -15,7 +15,10 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var cartCollection *mongo.Collection
+var (
+	cartCollection *mongo.Collection
+
+)
 
 func init() {
 	// Load .env file
@@ -48,55 +51,40 @@ func init() {
 
 // AddToCart adds an item to the user's cart
 func AddToCart(w http.ResponseWriter, r *http.Request) {
-	// Struktur untuk membaca request body
 	var requestBody struct {
-		UserID    string            `json:"user_id"`
-		ProductID string            `json:"product_id"`
-		Quantity  int               `json:"quantity"`
+		UserID    string `json:"user_id"`
+		ProductID string `json:"product_id"`
+		Quantity  int    `json:"quantity"`
 	}
 	
-	// Dekode JSON body
 	if err := json.NewDecoder(r.Body).Decode(&requestBody); err != nil {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
 	}
 
-	// Validasi userID
-	if requestBody.UserID == "" {
-		http.Error(w, "User ID is required", http.StatusBadRequest)
-		return
-	}
-
-	// Konversi userID dari string ke ObjectID
+	// Validate and convert UserID
 	userID, err := primitive.ObjectIDFromHex(requestBody.UserID)
 	if err != nil {
 		http.Error(w, "Invalid user ID format", http.StatusBadRequest)
 		return
 	}
 
-	// Validasi productID dan konversi ke ObjectID
-	if requestBody.ProductID == "" {
-		http.Error(w, "Product ID is required", http.StatusBadRequest)
-		return
-	}
+	// Validate and convert ProductID
 	productID, err := primitive.ObjectIDFromHex(requestBody.ProductID)
 	if err != nil {
 		http.Error(w, "Invalid product ID format", http.StatusBadRequest)
 		return
 	}
 
-	// Buat item keranjang berdasarkan input
 	cartItem := models.CartItem{
 		ProductID: productID,
 		Quantity:  requestBody.Quantity,
 	}
 
-	// Cari atau buat keranjang untuk pengguna
 	var cart models.Cart
 	err = cartCollection.FindOne(context.TODO(), bson.M{"user_id": userID}).Decode(&cart)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
-			// Buat keranjang baru jika tidak ditemukan
 			cart = models.Cart{
 				UserID: userID,
 				Items:  []models.CartItem{cartItem},
@@ -107,7 +95,6 @@ func AddToCart(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else {
-		// Jika keranjang ada, tambahkan item ke dalamnya
 		cart.Items = append(cart.Items, cartItem)
 		_, err = cartCollection.UpdateOne(context.TODO(), bson.M{"user_id": userID}, bson.M{"$set": bson.M{"items": cart.Items}})
 	}
@@ -117,7 +104,6 @@ func AddToCart(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Kirimkan respons
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(cart)
 }
@@ -129,15 +115,14 @@ func GetCart(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Konversi userID dari string ke ObjectID
-	objectID, err := primitive.ObjectIDFromHex(userIDStr)
+	userID, err := primitive.ObjectIDFromHex(userIDStr)
 	if err != nil {
 		http.Error(w, "Invalid user ID format", http.StatusBadRequest)
 		return
 	}
 
 	var cart models.Cart
-	err = cartCollection.FindOne(context.TODO(), bson.M{"user_id": objectID}).Decode(&cart)
+	err = cartCollection.FindOne(context.TODO(), bson.M{"user_id": userID}).Decode(&cart)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			http.Error(w, "Cart not found", http.StatusNotFound)
@@ -159,10 +144,14 @@ func UpdateCartItem(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	userID := r.Context().Value("userID").(primitive.ObjectID) // Pastikan middleware telah menambahkan userID ke context
+	userIDStr := r.URL.Query().Get("user_id")
+	userID, err := primitive.ObjectIDFromHex(userIDStr)
+	if err != nil {
+		http.Error(w, "Invalid user ID format", http.StatusBadRequest)
+		return
+	}
 
-	// Update the item in the cart
-	_, err := cartCollection.UpdateOne(context.TODO(),
+	_, err = cartCollection.UpdateOne(context.TODO(),
 		bson.M{"user_id": userID, "items.product_id": cartItem.ProductID},
 		bson.M{"$set": bson.M{"items.$.quantity": cartItem.Quantity}})
 
@@ -183,9 +172,13 @@ func RemoveCartItem(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	userID := r.Context().Value("userID").(primitive.ObjectID) // Pastikan middleware telah menambahkan userID ke context
+	userIDStr := r.URL.Query().Get("user_id")
+	userID, err := primitive.ObjectIDFromHex(userIDStr)
+	if err != nil {
+		http.Error(w, "Invalid user ID format", http.StatusBadRequest)
+		return
+	}
 
-	// Remove the item from the cart
 	_, err = cartCollection.UpdateOne(context.TODO(),
 		bson.M{"user_id": userID},
 		bson.M{"$pull": bson.M{"items": bson.M{"product_id": productID}}})
